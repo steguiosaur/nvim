@@ -1,6 +1,6 @@
 "    ______      
 "   / __/ /__  __   Neovim | Vim | Neovide
-"  _\ \/ __/ |/ /   GitHub: StevenPabz
+"  _\ \/ __/ |/ /   GitHub: stevenpabz
 " /___/\__/|___/    10 - 15 - 21
 
 """ Plugins
@@ -15,6 +15,7 @@ Plug 'preservim/nerdtree'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'mhinz/vim-startify'
+Plug 'davidhalter/jedi-vim'
 
 " Aesthetics
 Plug 'vim-airline/vim-airline'
