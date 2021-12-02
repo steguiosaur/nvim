@@ -1,8 +1,3 @@
-"    ______      
-"   / __/ /__  __   Neovim | Vim | Neovide
-"  _\ \/ __/ |/ /   GitHub: stevenpabz
-" /___/\__/|___/    10 - 15 - 21
-
 """ Plugins
 call plug#begin()
 
@@ -10,21 +5,19 @@ call plug#begin()
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 Plug 'preservim/nerdtree'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'mhinz/vim-startify'
 Plug 'davidhalter/jedi-vim'
+Plug 'tpope/vim-fugitive'
 
 " Aesthetics
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'bryanmylee/vim-colorscheme-icons'
-Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'wojciechkepka/vim-github-dark'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'romgrk/barbar.nvim'
+Plug 'itchyny/lightline.vim'
 Plug 'Yggdroot/indentLine'
-Plug 'ryanoasis/vim-devicons'
+Plug 'morhetz/gruvbox'
 
 call plug#end()
 
@@ -69,49 +62,25 @@ let g:python_host_prog  = '/data/data/com.termux/files/usr/bin/python2'
 :command PC PlugClean
 
 """ Plugin Settings 
+"bufferline
+set termguicolors
+let bufferline = get(g:, 'bufferline', {})
+let bufferline.clickable = v:true
+let bufferline.icons = v:false
+let bufferline.icon_separator_active = '▎'
+let bufferline.icon_separator_inactive = '▎'
+let bufferline.icon_close_tab = 'x'
+let bufferline.icon_close_tab_modified = '●'
+let bufferline.icon_pinned = '車'
+let bufferline.insert_at_start = v:false
+let bufferline.maximum_padding = 4
+let bufferline.maximum_length = 30
+let bufferline.semantic_letters = v:true
 
 " theme
-colorscheme ghdark
-let g:gh_color = "soft"
-
-" devicons
-set guifont=DroidSansMono\ Nerd\ Font\ 11
-let g:webdevicons_enable = 1
-let g:webdevicons_enable_airline_tabline = 1
-let g:webdevicons_enable_nerdtree = 1
-let g:webdevicons_enable_airline_statusline = 1
-let g:webdevicons_enable_startify = 1
-
-" vim-airline
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline#extensions#tabline#formatter = 'default'
-let g:airline_powerline_fonts = 1
-let g:airline_section_z = ' %{strftime("%-I:%M %p")}'
-let g:airline_section_warning = ''
-let g:airline_theme='dracula'
+colorscheme gruvbox
 
 " fzf
-let g:fzf_action = {
-  \ 'ctrl-t': 'tab split',
-  \ 'ctrl-s': 'split',
-  \ 'ctrl-v': 'vsplit' }
-let g:fzf_colors =
-\ { 'fg':      ['fg', 'Normal'],
-  \ 'bg':      ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Comment'],
-  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-  \ 'hl+':     ['fg', 'Statement'],
-  \ 'info':    ['fg', 'Type'],
-  \ 'border':  ['fg', 'Constant'],
-  \ 'prompt':  ['fg', 'Character'],
-  \ 'pointer': ['fg', 'Exception'],
-  \ 'marker':  ['fg', 'Keyword'],
-  \ 'spinner': ['fg', 'Label'],
-  \ 'header':  ['fg', 'Comment'] }
-
 " Bat theme for syntax coloring when viewing files in fzf
 let $BAT_THEME='base16'
 
@@ -125,30 +94,16 @@ autocmd VimEnter *
 "    \ |   NERDTree
     \ | endif
 
-" indentLine
-let g:indentLine_char = '▏'
-let g:indentLine_defaultGroup = 'NonText'
-" Disable indentLine from concealing json and markdown syntax (e.g. ```)
-let g:vim_json_syntax_conceal = 0
-let g:vim_markdown_conceal = 0
-let g:vim_markdown_conceal_code_blocks = 0
-
 " Neoclide/Coc
 set nobackup
 set nowritebackup
 set cmdheight=2
 set updatetime=300
 
-" Always show the signcolumn, otherwise it would shift the text each time
-" diagnostics appear/become resolved.
 if has("nvim-0.5.0") || has("patch-8.1.1564")
-  " Recently vim can merge signcolumn and number column into one
-"  set signcolumn=number
-"else
   set signcolumn=yes
 endif
 
-" Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
 inoremap <silent><expr> <TAB>
@@ -284,7 +239,6 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
-
 """ Additional Mappings
 
 " change windows with ctrl+(hjkl)
@@ -292,5 +246,4 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
-
 
