@@ -12,10 +12,12 @@ Plug 'mhinz/vim-startify'
 Plug 'davidhalter/jedi-vim'
 Plug 'tpope/vim-fugitive'
 
+Plug 'lervag/vimtex'
+
 " Aesthetics
-Plug 'kyazdani42/nvim-web-devicons'
 Plug 'romgrk/barbar.nvim'
 Plug 'itchyny/lightline.vim'
+Plug 'ryanoasis/vim-devicons'
 Plug 'Yggdroot/indentLine'
 Plug 'morhetz/gruvbox'
 
@@ -23,6 +25,7 @@ call plug#end()
 
 
 """ Main Configurations
+"set guifont=Fira_Code_Regular 11
 filetype plugin indent on
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab smarttab autoindent
 set incsearch ignorecase smartcase hlsearch
@@ -40,6 +43,7 @@ set showmatch               " show matching
 syntax on                   " syntax highlighting
 filetype plugin on
 nnoremap <esc> :nohlsearch<return><esc>
+set clipboard+=unnamedplus
 " system clipboard (requires +clipboard)
 
 """ Additional settings
