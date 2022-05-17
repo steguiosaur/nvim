@@ -4,15 +4,12 @@ call plug#begin()
 " Functionalities
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'preservim/nerdtree'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'mhinz/vim-startify'
 Plug 'davidhalter/jedi-vim'
 Plug 'tpope/vim-fugitive'
-
-Plug 'lervag/vimtex'
 
 " Aesthetics
 Plug 'romgrk/barbar.nvim'
@@ -25,7 +22,6 @@ call plug#end()
 
 
 """ Main Configurations
-"set guifont=Fira_Code_Regular 11
 filetype plugin indent on
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab smarttab autoindent
 set incsearch ignorecase smartcase hlsearch
@@ -83,6 +79,7 @@ let bufferline.semantic_letters = v:true
 
 " theme
 colorscheme gruvbox
+set background=dark
 
 " fzf
 " Bat theme for syntax coloring when viewing files in fzf
