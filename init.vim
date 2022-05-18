@@ -1,99 +1,103 @@
-""" Plugins
-call plug#begin()
 
-" Functionalities
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
-Plug 'preservim/nerdtree'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'mhinz/vim-startify'
-Plug 'davidhalter/jedi-vim'
-Plug 'tpope/vim-fugitive'
-
-" Aesthetics
-Plug 'romgrk/barbar.nvim'
-Plug 'itchyny/lightline.vim'
-Plug 'ryanoasis/vim-devicons'
-Plug 'Yggdroot/indentLine'
-Plug 'morhetz/gruvbox'
-
-call plug#end()
-
-
-""" Main Configurations
-filetype plugin indent on
+""" ------ Main Configurations ------
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab smarttab autoindent
 set incsearch ignorecase smartcase hlsearch
 set wildmode=longest,list,full wildmenu
 set ruler laststatus=2 showcmd showmode
 set list listchars=trail:»,tab:»-
-set fillchars+=vert:\ 
-set wrap breakindent
-set encoding=utf8
-set textwidth=0
-set hidden
+filetype plugin indent on
 set number relativenumber
-set title
-set showmatch               " show matching 
-syntax on                   " syntax highlighting
-filetype plugin on
-nnoremap <esc> :nohlsearch<return><esc>
-set clipboard+=unnamedplus
-" system clipboard (requires +clipboard)
-
-""" Additional settings
-set modeline           " enable vim modelines
-set confirm            " ask confirmation like save before quit.
-set shortmess+=c       " Hide or shorten certain messages
 set clipboard=unnamedplus
+set fillchars+=vert:\
+set wrap breakindent
+filetype plugin on     " detect type of file
+set encoding=utf8      " output encoding
+set shortmess+=c       " Hide or shorten certain messages
+set textwidth=0        " adjust width max 80 char
+set showmatch          " show matching
+set modeline           " enable vim modelines
+set confirm            " confirmation save before quit.
+set hidden             " related to buffers
+syntax on              " syntax highlighting
+set title
 
-let g:netrw_altv = 1
-let g:netrw_liststyle = 3
-let g:netrw_browse_split = 3
 let g:python3_host_prog = '/data/data/com.termux/files/usr/bin/python3'
 let g:python_host_prog  = '/data/data/com.termux/files/usr/bin/python2'
 
 " ------ command shortcuts ------
-:command FZ FZF
 :command EX Explore
-:command PI PlugInstall
+:command FZ FZF
 :command NT NERDTree
 :command PC PlugClean
+:command PI PlugInstall
+:command PU PlugUpdate
 
-""" Plugin Settings 
-"bufferline
-set termguicolors
-let bufferline = get(g:, 'bufferline', {})
-let bufferline.clickable = v:true
-let bufferline.icons = v:false
-let bufferline.icon_separator_active = '▎'
-let bufferline.icon_separator_inactive = '▎'
-let bufferline.icon_close_tab = 'x'
-let bufferline.icon_close_tab_modified = '●'
-let bufferline.icon_pinned = '車'
-let bufferline.insert_at_start = v:false
-let bufferline.maximum_padding = 4
-let bufferline.maximum_length = 30
-let bufferline.semantic_letters = v:true
+""" ------ Additional Mappings ------
+" change windows with ctrl+(hjkl)
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+" buffer mappings
+map bn :bn<cr>
+map bp :bp<cr>
+map bd :bdelete<cr>
+" remove highlight
+nnoremap <esc><esc> :noh<return>
+
+""" ------ Plugins ------
+call plug#begin()
+
+" Functionalities
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
+Plug 'preservim/tagbar'           " browse tags
+Plug 'preservim/nerdtree'         " NERDTree
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'           " Fuzzyfinder
+Plug 'davidhalter/jedi-vim'       " autocompletion Py
+Plug 'tpope/vim-fugitive'         " git vim plugin
+Plug 'tpope/vim-surround'         " surround
+
+" Aesthetics
+Plug 'mhinz/vim-startify'         " Startify
+Plug 'vim-airline/vim-airline'    " bufferline
+Plug 'ryanoasis/vim-devicons'     " icons
+Plug 'Yggdroot/indentLine'        " line indent
+Plug 'morhetz/gruvbox'            " colorscheme
+
+call plug#end()
+
+""" ------ Plugin Settings ------
+" NETrw
+let g:netrw_altv = 1
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 3
+
+" NERDTree
+let NERDTreeQuitOnOpen = 1
+let NERDTreeWinSize = 20
+
+" vim-airline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#formatter = 'unique_tail'
 
 " theme
+let g:gruvbox_contrast_dark = 'hard'
 colorscheme gruvbox
-set background=dark
-
-" fzf
-" Bat theme for syntax coloring when viewing files in fzf
-let $BAT_THEME='base16'
 
 " Startify
-let g:startify_fortune_use_unicode = 1
-
-" Startify + NERDTree on start when no file is specified
 autocmd VimEnter *
     \   if !argc()
     \ |   Startify
 "    \ |   NERDTree
     \ | endif
+
+" Tagbar
+let g:tagbar_width = 20
+:command TT TagbarToggle
 
 " Neoclide/Coc
 set nobackup
@@ -239,12 +243,4 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
-
-""" Additional Mappings
-
-" change windows with ctrl+(hjkl)
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
 
