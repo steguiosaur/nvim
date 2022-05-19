@@ -100,6 +100,7 @@ let g:gruvbox_contrast_dark = 'hard'
 colorscheme gruvbox
 
 " Startify
+let g:webdevicons_enable_startify = 1
 autocmd VimEnter *
     \   if !argc()
     \ |   Startify
