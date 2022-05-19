@@ -102,6 +102,10 @@ let g:gruvbox_contrast_dark = 'hard'
 colorscheme gruvbox
 
 " Startify
+function! StartifyEntryFormat()
+return 'WebDevIconsGetFileTypeSymbol(absolute_path) ." ". entry_path'
+endfunction
+
 autocmd VimEnter *
     \   if !argc()
     \ |   Startify
