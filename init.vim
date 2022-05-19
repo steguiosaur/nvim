@@ -46,44 +46,56 @@ map bd :bdelete<cr>
 " remove highlight
 nnoremap <esc><esc> :noh<return>
 
+
 """ ------ Plugins ------
 call plug#begin()
 
+" Aesthetics
+Plug 'vim-airline/vim-airline'    " bufferline
+Plug 'ryanoasis/vim-devicons'     " icons
+Plug 'Yggdroot/indentLine'        " line indent
+Plug 'mhinz/vim-startify'         " Startify
+Plug 'morhetz/gruvbox'            " colorscheme
+
 " Functionalities
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
+Plug 'ap/vim-css-color'           " HEX, RGB, HSL
 Plug 'preservim/tagbar'           " browse tags
 Plug 'preservim/nerdtree'         " NERDTree
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'           " Fuzzyfinder
-Plug 'davidhalter/jedi-vim'       " autocompletion Py
-Plug 'tpope/vim-fugitive'         " git vim plugin
-Plug 'tpope/vim-surround'         " surround
+Plug 'tpope/vim-surround'         " parenthesis change
+Plug 'jiangmiao/auto-pairs'       " auto parenthesis
 
-" Aesthetics
-Plug 'mhinz/vim-startify'         " Startify
-Plug 'vim-airline/vim-airline'    " bufferline
-Plug 'ryanoasis/vim-devicons'     " icons
-Plug 'Yggdroot/indentLine'        " line indent
-Plug 'morhetz/gruvbox'            " colorscheme
+" Completion, linters
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'davidhalter/jedi-vim'       " Python
+Plug 'plasticboy/vim-markdown'    " Markdown
+
+" Git
+Plug 'tpope/vim-fugitive'         " git command
 
 call plug#end()
 
+
 """ ------ Plugin Settings ------
 " NETrw
-let g:netrw_altv = 1
-let g:netrw_liststyle = 3
-let g:netrw_browse_split = 3
+let g:netrw_banner=0
+let g:netrw_liststyle=3
+let g:netrw_browse_split=4
+let g:netrw_altv=1
+let g:netrw_winsize=20
+let g:netrw_keepdir=0
+let g:netrw_localcopydircmd='cp -r'
 
 " NERDTree
-let NERDTreeQuitOnOpen = 1
+let NERDTreeShowHidden = 1
 let NERDTreeWinSize = 20
+let NERDTreeQuitOnOpen = 1
 
 " vim-airline
+let g:airline_theme = 'gruvbox'
+let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline#extensions#tabline#formatter = 'unique_tail'
 
 " theme
 let g:gruvbox_contrast_dark = 'hard'
