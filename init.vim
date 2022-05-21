@@ -58,7 +58,7 @@ Plug 'mhinz/vim-startify'         " Startify
 Plug 'morhetz/gruvbox'            " colorscheme
 
 " Functionalities
-Plug 'ap/vim-css-color'           " HEX, RGB, HSL
+"Plug 'ap/vim-css-color'           " HEX, RGB, HSL
 Plug 'preservim/tagbar'           " browse tags
 Plug 'preservim/nerdtree'         " NERDTree
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -69,10 +69,10 @@ Plug 'jiangmiao/auto-pairs'       " auto parenthesis
 " Completion, linters
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'davidhalter/jedi-vim'       " Python
-Plug 'plasticboy/vim-markdown'    " Markdown
+"Plug 'plasticboy/vim-markdown'    " Markdown
 
 " Git
-Plug 'tpope/vim-fugitive'         " git command
+Plug 'tpope/vim-fugitive'         " git commands
 
 call plug#end()
 
