@@ -5,11 +5,9 @@ set tabstop=4 softtabstop=4 shiftwidth=4 expandtab smarttab autoindent
 set incsearch ignorecase smartcase hlsearch
 set wildmode=longest,list,full wildmenu
 set ruler laststatus=2 showcmd showmode
-set list listchars=trail:»,tab:»-
 filetype plugin indent on
 set number relativenumber
 set clipboard=unnamedplus
-set fillchars+=vert:\
 set wrap breakindent
 filetype plugin on     " detect type of file
 set encoding=utf8      " output encoding
@@ -32,6 +30,7 @@ let g:python_host_prog  = '/data/data/com.termux/files/usr/bin/python2'
 :command PC PlugClean
 :command PI PlugInstall
 :command PU PlugUpdate
+:command TM terminal
 
 """ ------ Additional Mappings ------
 " change windows with ctrl+(hjkl)
@@ -86,6 +85,7 @@ let g:netrw_keepdir=0
 let g:netrw_localcopydircmd='cp -r'
 
 " nerdtree
+let NERDTreeMinimalUI = 1
 let NERDTreeShowHidden = 1
 let NERDTreeWinSize = 20
 let NERDTreeQuitOnOpen = 1
@@ -119,5 +119,5 @@ endfunction
 autocmd VimEnter *
     \   if !argc()
     \ |   Startify
-"    \ |   NERDTree
+"   \ |   NERDTree
     \ | endif
