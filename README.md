@@ -1,3 +1,3 @@
 # Configuration for NEOVIM
 Currently in use on an Android terminal emulator — Termux.
-![Screenshot_20220518-121124~2](https://user-images.githubusercontent.com/91378710/168956664-62ef3cba-ca8a-42fc-8ced-fbde8fd8cb03.jpg)
+![Screenshot_20220625-161928](https://user-images.githubusercontent.com/91378710/175765044-4a739dfc-8c83-435b-ad5b-c61079fdd59f.png)
