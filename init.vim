@@ -69,7 +69,6 @@ Plug 'jiangmiao/auto-pairs'       " auto parenthesis
 Plug 'lambdalisue/fern.vim'       " file explorer
 " Completion, linters
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'davidhalter/jedi-vim'       " Python
 " Git
 Plug 'tpope/vim-fugitive'         " git commands
 call plug#end()
