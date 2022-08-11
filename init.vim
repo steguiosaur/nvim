@@ -10,9 +10,9 @@ set number relativenumber
 set clipboard=unnamedplus
 set wrap breakindent
 filetype plugin on     " detect type of file
-set encoding=utf8    " output encoding
-set shortmess+=c     " Hide or shorten certain messages
-set textwidth=0      " adjust width max 80 char
+set encoding=utf8      " output encoding
+set shortmess+=c       " Hide or shorten certain messages
+set textwidth=0        " adjust width max 80 char
 set showmatch          " show matching
 set modeline           " enable vim modelines
 set confirm            " confirmation save before quit.
@@ -71,6 +71,7 @@ Plug 'lambdalisue/fern.vim'       " file explorer
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Git
 Plug 'tpope/vim-fugitive'         " git commands
+Plug 'airblade/vim-gitgutter'     " git diff
 call plug#end()
 
 
@@ -119,11 +120,10 @@ inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
 " startify
 let g:startify_files_number = 5
 let g:ascii = [
-            \' _   _ _____ _____     _____ __  __',
-            \'| \ | | ____/ _ \ \   / /_ _|  \/  |',
-            \'|  \| |  _|| | | \ \ / / | || |\/| |',
-            \'| |\  | |__| |_| |\ V /  | || |  | |',
-            \'|_| \_|_____\___/  \_/  |___|_|  |_|',
+            \' ',
+            \'▒█▄░▒█ ▒█▀▀▀ ▒█▀▀▀█ ▒█░░▒█ ▀█▀ ▒█▀▄▀█',
+            \'▒█▒█▒█ ▒█▀▀▀ ▒█░░▒█ ░▒█▒█░ ▒█░ ▒█▒█▒█',
+            \'▒█░░▀█ ▒█▄▄▄ ▒█▄▄▄█ ░░▀▄▀░ ▄█▄ ▒█░░▒█',
             \' ',
             \]
 let g:startify_custom_header =
