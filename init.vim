@@ -9,6 +9,7 @@ filetype plugin indent on
 set number relativenumber
 set clipboard=unnamedplus
 set wrap breakindent
+set termguicolors
 filetype plugin on     " detect type of file
 set encoding=utf8      " output encoding
 set shortmess+=c       " Hide or shorten certain messages
@@ -64,7 +65,6 @@ Plug 'preservim/tagbar'           " browse tags
 Plug 'preservim/nerdtree'         " NERDTree
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'           " Fuzzyfinder
-Plug 'tpope/vim-surround'         " parenthesis change
 Plug 'jiangmiao/auto-pairs'       " auto parenthesis
 Plug 'lambdalisue/fern.vim'       " file explorer
 " Completion, linters
@@ -102,6 +102,7 @@ let g:airline#extensions#tabline#enabled = 1
 
 " colorscheme
 let g:gruvbox_contrast_dark = 'hard'
+syntax enable
 colorscheme gruvbox
 
 " tagbar
