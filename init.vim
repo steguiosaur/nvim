@@ -1,16 +1,15 @@
-" NEOVIM CONFIG 220807
+" NEOVIM CONFIG 220829
 
 """ ------ Main Configurations ------
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab smarttab autoindent
 set incsearch ignorecase smartcase hlsearch
 set wildmode=longest,list,full wildmenu
 set ruler laststatus=2 showcmd showmode
+set wrap breakindent linebreak
 filetype plugin indent on
 set number relativenumber
 set clipboard=unnamedplus
-set wrap breakindent
-set termguicolors
-filetype plugin on     " detect type of file
+set termguicolors      " about colors of something
 set encoding=utf8      " output encoding
 set shortmess+=c       " Hide or shorten certain messages
 set textwidth=0        " adjust width max 80 char
@@ -26,9 +25,7 @@ let g:python_host_prog  = '$HOME/../usr/bin/python2'
 
 
 """ ------ Command Shortcuts ------
-:command EX Explore
 :command FZ FZF
-:command NT NERDTree
 :command PC PlugClean
 :command PI PlugInstall
 :command PU PlugUpdate
@@ -49,20 +46,20 @@ map bd :bdelete<cr>
 " remove highlight
 nnoremap <esc><esc> :noh<return>
 "etc mappings
-nmap<silent> f :Fern . -drawer -toggle -width=25<cr>
+nmap<silent> f :Fern . -stay -drawer -toggle -width=25<cr>
 
 """ ------ Plugins ------
 call plug#begin()
 " Aesthetics
-Plug 'vim-airline/vim-airline'    " bufferline
+Plug 'akinsho/bufferline.nvim', { 'tag': 'v2.*' }
+Plug 'nvim-lualine/lualine.nvim'  " something
 Plug 'ryanoasis/vim-devicons'     " icons
 Plug 'Yggdroot/indentLine'        " line indent
 Plug 'mhinz/vim-startify'         " startify
-Plug 'morhetz/gruvbox'            " colorscheme
 Plug 'lambdalisue/fern-renderer-devicons.vim'
+Plug 'EdenEast/nightfox.nvim'     " colorscheme
 " Functionalities
 Plug 'preservim/tagbar'           " browse tags
-Plug 'preservim/nerdtree'         " NERDTree
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'           " Fuzzyfinder
 Plug 'jiangmiao/auto-pairs'       " auto parenthesis
@@ -80,30 +77,15 @@ call plug#end()
 let g:fern#renderer = "devicons"
 let g:fern_renderer_devicons_disable_warning = 1
 
-" NETrw
-let g:netrw_banner = 0
-let g:netrw_liststyle = 3
-let g:netrw_browse_split = 4
-let g:netrw_altv = 1
-let g:netrw_winsize = 20
-let g:netrw_keepdir = 0
-let g:netrw_localcopydircmd = 'cp -r'
-
-" nerdtree
-let NERDTreeMinimalUI = 1
-let NERDTreeShowHidden = 1
-let NERDTreeWinSize = 20
-let NERDTreeQuitOnOpen = 1
-
-" vim-airline
-let g:airline_theme = 'gruvbox'
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
+" bufferline + line
+lua << END
+require("bufferline").setup{}
+require('lualine').setup()
+END
 
 " colorscheme
-let g:gruvbox_contrast_dark = 'hard'
 syntax enable
-colorscheme gruvbox
+colorscheme nightfox
 
 " tagbar
 let g:tagbar_width = 20
@@ -119,6 +101,9 @@ inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " startify
+function! StartifyEntryFormat()
+    return 'WebDevIconsGetFileTypeSymbol(absolute_path) ." ". entry_path'
+endfunction
 let g:startify_files_number = 5
 let g:ascii = [
             \' ',
@@ -129,7 +114,3 @@ let g:ascii = [
             \]
 let g:startify_custom_header =
           \ 'startify#center(g:ascii) + startify#center(startify#fortune#boxed())'
-
-function! StartifyEntryFormat()
-    return 'WebDevIconsGetFileTypeSymbol(absolute_path) ." ". entry_path'
-endfunction
