@@ -15,9 +15,8 @@ set shortmess+=c       " Hide or shorten certain messages
 set textwidth=0        " adjust width max 80 char
 set showmatch          " show matching
 set modeline           " enable vim modelines
-set confirm            " confirmation save before quit.
+set confirm            " confirm save before quit.
 set hidden             " related to buffers
-syntax on              " syntax highlighting
 set title
 
 let g:python3_host_prog = '$HOME/../usr/bin/python3'
