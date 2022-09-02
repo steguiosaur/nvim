@@ -28,7 +28,6 @@ let g:python_host_prog  = '$HOME/../usr/bin/python2'
 :command PC PlugClean
 :command PI PlugInstall
 :command PU PlugUpdate
-:command TM terminal
 :command TT TagbarToggle
 
 
@@ -43,7 +42,7 @@ map bn :bn<cr>
 map bp :bp<cr>
 map bd :bdelete<cr>
 " remove highlight
-nnoremap <esc><esc> :noh<return>
+nnoremap<silent> <esc><esc> :noh<return>
 "etc mappings
 nmap<silent> f :Fern . -stay -drawer -toggle -width=25<cr>
 
@@ -65,6 +64,7 @@ Plug 'jiangmiao/auto-pairs'       " auto parenthesis
 Plug 'lambdalisue/fern.vim'       " file explorer
 " Completion, linters
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'lervag/vimtex'              " LaTeX
 " Git
 Plug 'tpope/vim-fugitive'         " git commands
 Plug 'airblade/vim-gitgutter'     " git diff
@@ -98,6 +98,26 @@ set signcolumn=yes
 autocmd CursorHold * silent call CocActionAsync('highlight')
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+let g:coc_global_extensions = [
+    \   'coc-clangd',
+    \   'coc-cmake',
+    \   'coc-css',
+    \   'coc-docker',
+    \   'coc-html',
+    \   'coc-java',
+    \   'coc-json',
+    \   'coc-markdownlint',
+    \   'coc-phpls',
+    \   'coc-pyright',
+    \   'coc-rls',
+    \   'coc-sh',
+    \   'coc-sql',
+    \   'coc-tsserver',
+    \   'coc-word',
+    \   'coc-xml',
+    \   'coc-zig',
+    \]
 
 " startify
 function! StartifyEntryFormat()
