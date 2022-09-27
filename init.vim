@@ -1,6 +1,6 @@
-" NEOVIM CONFIG 220829
+" NEOVIM CONFIG 220927
 
-""" ------ Main Configurations ------
+" ------ OPTIONS ------
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab smarttab autoindent
 set incsearch ignorecase smartcase hlsearch
 set wildmode=longest,list,full wildmenu
@@ -9,82 +9,180 @@ set wrap breakindent linebreak
 filetype plugin indent on
 set number relativenumber
 set clipboard=unnamedplus
-set termguicolors      " about colors of something
-set encoding=utf8      " output encoding
-set shortmess+=c       " Hide or shorten certain messages
-set textwidth=0        " adjust width max 80 char
-set showmatch          " show matching
-set modeline           " enable vim modelines
-set confirm            " confirm save before quit.
-set hidden             " related to buffers
+set termguicolors       " about colors of something
+set encoding=utf8       " output encoding
+set shortmess+=c        " Hide or shorten certain messages
+set textwidth=0         " adjust width max 80 char
+set showmatch           " show matching
+set modeline            " enable vim modelines
+set confirm             " confirm save before quit.
+set hidden              " related to buffers
 set title
 
 let g:python3_host_prog = '$HOME/../usr/bin/python3'
 let g:python_host_prog  = '$HOME/../usr/bin/python2'
 
 
-""" ------ Command Shortcuts ------
-:command FZ FZF
+" ------ KEYMAPS ------
+let mapleader = " "
+" vimPlug
 :command PC PlugClean
 :command PI PlugInstall
 :command PU PlugUpdate
+:command FZ FZF
 :command TT TagbarToggle
-
-
-""" ------ Additional Mappings ------
 " change windows with ctrl+(hjkl)
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
+nnoremap <C-j> <C-W><C-J>
+nnoremap <C-k> <C-W><C-K>
+nnoremap <C-l> <C-W><C-L>
+nnoremap <C-h> <C-W><C-H>
 " buffer mappings
 map bn :bn<cr>
 map bp :bp<cr>
 map bd :bdelete<cr>
 " remove highlight
 nnoremap<silent> <esc><esc> :noh<return>
-"etc mappings
-nmap<silent> f :Fern . -stay -drawer -toggle -width=25<cr>
+" file explorer
+nmap<silent> <C-b> :NvimTreeToggle<cr>
+" Telescope.nvim
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
-""" ------ Plugins ------
+
+" ------ PLUGINS ------
 call plug#begin()
 " Aesthetics
 Plug 'akinsho/bufferline.nvim', { 'tag': 'v2.*' }
-Plug 'nvim-lualine/lualine.nvim'  " something
-Plug 'ryanoasis/vim-devicons'     " icons
-Plug 'Yggdroot/indentLine'        " line indent
-Plug 'mhinz/vim-startify'         " startify
-Plug 'lambdalisue/fern-renderer-devicons.vim'
-Plug 'EdenEast/nightfox.nvim'     " colorscheme
+Plug 'nvim-lualine/lualine.nvim'    " statusline
+Plug 'ryanoasis/vim-devicons'       " icons
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'norcalli/nvim-colorizer.lua'  " colorHighlighter
+Plug 'sam4llis/nvim-tundra'         " colorscheme
 " Functionalities
-Plug 'preservim/tagbar'           " browse tags
+Plug 'Yggdroot/indentLine'          " indention
+Plug 'mhinz/vim-startify'           " startPrompt
+Plug 'folke/which-key.nvim'         " keyCommands
+Plug 'preservim/tagbar'             " browseTags
+Plug 'jiangmiao/auto-pairs'         " autoParenthesis
+Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
+Plug 'nvim-lua/plenary.nvim'        " layout
+" File Explorer
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'           " Fuzzyfinder
-Plug 'jiangmiao/auto-pairs'       " auto parenthesis
-Plug 'lambdalisue/fern.vim'       " file explorer
-" Completion, linters
+Plug 'junegunn/fzf.vim'             " fuzzyFinder
+Plug 'kyazdani42/nvim-web-devicons' " fileTreeIcons
+Plug 'kyazdani42/nvim-tree.lua'     " fileTree
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
+" Completion Linters
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'lervag/vimtex'              " LaTeX
+Plug 'lervag/vimtex'                " LaTeX
 " Git
-Plug 'tpope/vim-fugitive'         " git commands
-Plug 'airblade/vim-gitgutter'     " git diff
+Plug 'tpope/vim-fugitive'           " gitCommands
+Plug 'lewis6991/gitsigns.nvim'      " gutterDiff
 call plug#end()
 
 
-""" ------ Plugin Settings ------
-" Fern
-let g:fern#renderer = "devicons"
-let g:fern_renderer_devicons_disable_warning = 1
+" ------ PLUGIN SETTINGS ------
 
-" bufferline + line
+" LUA CONFIG
 lua << END
-require("bufferline").setup{}
-require('lualine').setup()
+-- Nvim Tree
+require("nvim-tree").setup{
+        renderer = {
+            indent_markers = {
+                enable = true,
+            },
+            icons = {
+                glyphs = {
+                    default = '',
+                    symlink = '',
+                },
+                show = {
+                    git = true,
+                    folder = true,
+                    file = true,
+                    folder_arrow = true,
+                }
+            }
+        },
+        actions = {
+            open_file = {
+                window_picker = {
+                    exclude = {
+                        filetype = {
+                            "packer",
+                            "qf"
+                        },
+                        buftype = {
+                            "terminal",
+                            "help"
+                        }
+                    },
+                },
+            },
+        },
+        filters = {
+            exclude = {'.git', 'node_modules', '.cache'},
+        },
+        update_focused_file = { enable = true },
+        hijack_directories = { enable = true },
+        view = {
+            hide_root_folder = true,
+            mappings = {
+                list = {
+                    { key='l'   , action = "edit" },
+                    { key='o'   , action = "edit" },
+                    { key='<cr>', action = "edit" },
+                    { key='I'   , action = "toggle_ignored" },
+                    { key='H'   , action = "toggle_dotfiles" },
+                    { key='R'   , action = "refresh" },
+                    { key='='   , action = "preview" },
+                    { key='X'   , action = "xdg_open", action_cb = xdg_open }
+                }
+            }
+        },
+        open_on_setup = true,
+}
+
+-- Git Signs
+require('gitsigns').setup()
+
+-- Bufferline
+require("bufferline").setup{
+    options = {
+        buffer_close_icon = '',
+        modified_icon = '',
+        close_icon = '',
+        show_close_icon = false,
+        left_trunc_marker = '',
+        right_trunc_marker = '',
+        color_icons = true,
+        offsets = {
+            {
+                filetype = "NvimTree",
+                text = "File Explorer" ,
+                text_align = "center",
+                separator = false
+            },
+        },
+    },
+}
+
+-- Lualine
+require('lualine').setup{
+    sections = {
+        lualine_c = { },
+        lualine_x = {'encoding' ,'filetype'},
+    },
+}
 END
+autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif
+
 
 " colorscheme
 syntax enable
-colorscheme nightfox
+colorscheme tundra
 
 " tagbar
 let g:tagbar_width = 20
@@ -110,7 +208,7 @@ let g:coc_global_extensions = [
     \   'coc-markdownlint',
     \   'coc-phpls',
     \   'coc-pyright',
-    \   'coc-rls',
+    \   'coc-rust-analyzer',
     \   'coc-sh',
     \   'coc-sql',
     \   'coc-tsserver',
