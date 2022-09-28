@@ -57,26 +57,26 @@ call plug#begin()
 Plug 'akinsho/bufferline.nvim', { 'tag': 'v2.*' }
 Plug 'nvim-lualine/lualine.nvim'    " statusline
 Plug 'ryanoasis/vim-devicons'       " icons
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'norcalli/nvim-colorizer.lua'  " colorHighlighter
 Plug 'sam4llis/nvim-tundra'         " colorscheme
 " Functionalities
-Plug 'Yggdroot/indentLine'          " indention
 Plug 'mhinz/vim-startify'           " startPrompt
+Plug 'Yggdroot/indentLine'          " indention
+Plug 'jiangmiao/auto-pairs'         " autoParenthesis
 Plug 'folke/which-key.nvim'         " keyCommands
 Plug 'preservim/tagbar'             " browseTags
-Plug 'jiangmiao/auto-pairs'         " autoParenthesis
 Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
-Plug 'nvim-lua/plenary.nvim'        " layout
 " File Explorer
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'             " fuzzyFinder
 Plug 'kyazdani42/nvim-web-devicons' " fileTreeIcons
 Plug 'kyazdani42/nvim-tree.lua'     " fileTree
+Plug 'nvim-lua/plenary.nvim'        " layout
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 " Completion Linters
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'lervag/vimtex'                " LaTeX
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'norcalli/nvim-colorizer.lua'  " colorHighlighter
 " Git
 Plug 'tpope/vim-fugitive'           " gitCommands
 Plug 'lewis6991/gitsigns.nvim'      " gutterDiff
@@ -186,6 +186,9 @@ colorscheme tundra
 
 " tagbar
 let g:tagbar_width = 20
+
+" auto pairs
+let g:AutoPairs = {'(':')', '[':']', '{':'}'}
 
 " coc.nvim
 set nobackup

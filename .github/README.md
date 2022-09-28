@@ -1,78 +1,153 @@
 
 # NEOVIM Config
 
-Config in use on an Android terminal emulator — Termux.
+---
+
+Config for an Android terminal emulator — Termux.
 
 ![NEOVIM](./screenshots/Screenshot_1.jpg)
 
+## Features
+
 ---
+
+> Configurable under `~/.config/nvim/init.vim`
+
+### Aesthetics
+
+    - Buffer - `akinsho/bufferline.nvim`
+    - Statusline - `nvim-lualine/lualine.nvim`
+    - Icons - `ryanoasis/vim-devicons`
+    - Colorscheme - `sam4llis/nvim-tundra`
+
+### Functionality
+
+    - Start Prompt- `mhinz/vim-startify`
+    - Indentation - `Yggdroot/indentLine`
+    - Auto Pairing - `jiangmiao/auto-pairs`
+    - Tags - `preservim/tagbar`
+    - Command - `folke/which-key.nvim`
+    - Terminal - `akinsho/toggleterm.nvim`
+
+### File Explorer
+
+    Fuzzy Finder
+    - `junegunn/fzf`
+    - `junegunn/fzf.vim`
+
+    Nvim Tree
+    - `kyazdani42/nvim-web-devicons`
+    - `kyazdani42/nvim-tree.lua`
+
+    Telescope
+    - `nvim-telescope/telescope.nvim`
+    - `nvim-lua/plenary.nvim`
+
+### Completion, Linters, and Syntax Highlighting
+
+    - LSP - `neoclide/coc.nvim`
+    - LaTeX - `lervag/vimtex`
+    - Syntax Highlighting - `nvim-treesitter/nvim-treesitter`
+    - Color Value Highlighter - `norcalli/nvim-colorizer.lua`
+
+### Git
+
+    - Git Command Mode - `tpope/vim-fugitive`
+    - Gutter Changes - `lewis6991/gitsigns.nvim`
 
 ## Setup
 
-**Required**
+---
+
+### Required
 
 - Neovim
 - Git
-
-```console
-apt install git
-```
-
 - Lua
-
-```console
-apt install lua
-```
-
 - [Vim-Plug (Plugin Manager)](https://github.com/junegunn/vim-plug )
 
-**Installation**
+### Optional
 
-```console
-git clone https://github.com/steguiosaur/nvim ~/.config/nvim
-cd .config/nvim
-```
+- Ctags (for :TagbarToggle)
 
-**Command Mode**
+### Installation
 
-```console
-nvim
-:PlugInstall
-```
+1. Install git, neovim, lua, and ctags
+
+        ```console
+        apt install git lua neovim ctags
+        ```
+
+2. Install plugin manager (preferably Vim-plug)
+
+    > Read documentation on how to install.
+    - [Vim-Plug (Plugin Manager)](https://github.com/junegunn/vim-plug )
+
+3. Clone repository to $HOME/.config/nvim
+
+        ```console
+        git clone https://github.com/steguiosaur/nvim ~/.config/nvim
+        ```
+
+4. Install Packages
+
+    Open Neovim by executing `nvim` and type
+
+        ```console
+        :PlugInstall
+        ```
+
+    in command mode.
+
+## KeyMaps and Command Shortcuts
 
 ---
 
-## Key Maps and Command Shortcuts
+### KeyMaps
 
-### Key Maps
+#### Change windows with ctrl+(hjkl)
 
-**Change windows with ctrl+(hjkl)**
-Ctrl h
-Ctrl j
-Ctrl k
-Ctrl l
+| KeyMap |    Action    |
+|:------:|:------------:|
+| Ctrl h | Left window  |
+| Ctrl j | Down window  |
+| Ctrl k | Up window    |
+| Ctrl l | Right window |
 
-**Buffer**
-bn Buffer-Next
-bp Buffer-Previous
-bd Buffer-Delete
+#### Buffer
 
-**Drawer File Explorer**
-Ctrl b
+| KeyMap |      Action     |
+|:------:|:----------------|
+| b n    | Buffer-Next     |
+| b p    | Buffer-Previous |
+| b d    | Buffer-Delete   |
 
-**Telescope nvim**
-Spc + ff Telescope find_files
-Spc + fg Telescope live_grep
-Spc + fb Telescope buffers
-Spc + fh Telescope help_tags
+#### Drawer File Explorer
 
-### Command Shortcuts
+| KeyMap |       Action      |
+|:------:|:------------------|
+| Ctrl b | `:NvimTreeToggle` |
 
-**Vim-Plug**
-PC :PlugClean
-PI  :PlugInstall
-PU :PlugUpdate
+#### Telescope nvim
 
-FZ :FZF
-TT :TagbarToggle
+| KeyMap  |          Action         |
+|:-------:|:------------------------|
+| Spc f f | `:Telescope find_files` |
+| Spc f g | `:Telescope live_grep`  |
+| Spc f b | `:Telescope buffers`    |
+| Spc f h | `:Telescope help_tags`  |
 
+### Command Mode Shortcuts
+
+|  Shortcut  |  Command   |
+|:-----------------------:|
+|         Vim-Plug        |
+|:-----:|:---------------:|
+| `:PC` | `:PlugClean`    |
+| `:PI` | `:PlugInstall`  |
+| `:PU` | `:PlugUpdate`   |
+|:-----------------------:|
+|       Miscellaneous     |
+|:-----:|:----------------|
+| `:FZ` | `:FZF`          |
+| `:TT` | `:TagbarToggle` |
