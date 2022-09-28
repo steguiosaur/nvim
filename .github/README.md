@@ -1,26 +1,24 @@
 
 # NEOVIM Config
 
----
-
 Config for an Android terminal emulator — Termux.
 
 ![NEOVIM](./screenshots/Screenshot_1.jpg)
 
-## Features
-
 ---
+
+## Features
 
 > Configurable under `~/.config/nvim/init.vim`
 
-**Aesthetics**
+##### Aesthetics
 
 - Buffer - `akinsho/bufferline.nvim`
 - Statusline - `nvim-lualine/lualine.nvim`
 - Icons - `ryanoasis/vim-devicons`
 - Colorscheme - `sam4llis/nvim-tundra`
 
-**Functionality**
+##### Functionality
 
 - Start Prompt- `mhinz/vim-startify`
 - Indentation - `Yggdroot/indentLine`
@@ -29,7 +27,7 @@ Config for an Android terminal emulator — Termux.
 - Command - `folke/which-key.nvim`
 - Terminal - `akinsho/toggleterm.nvim`
 
-**File Explorer**
+##### File Explorer
 
 - Fuzzy Finder
   - `junegunn/fzf`
@@ -43,34 +41,32 @@ Config for an Android terminal emulator — Termux.
   - `nvim-telescope/telescope.nvim`
   - `nvim-lua/plenary.nvim`
 
-**Completion, Linters, and Syntax Highlighting**
+##### Completion, Linters, and Syntax Highlighting
 
 - LSP - `neoclide/coc.nvim`
 - LaTeX - `lervag/vimtex`
 - Syntax Highlighting - `nvim-treesitter/nvim-treesitter`
 - Color Value Highlighter - `norcalli/nvim-colorizer.lua`
 
-**Git**
+##### Git
 
 - Git Command Mode - `tpope/vim-fugitive`
 - Gutter Changes - `lewis6991/gitsigns.nvim`
 
 ## Setup
 
----
-
-**Required**
+##### Required
 
 - Neovim
 - Git
 - Lua
 - [Vim-Plug (Plugin Manager)](https://github.com/junegunn/vim-plug )
 
-**Optional**
+##### Optional
 
 - Ctags (for :TagbarToggle)
 
-**Installation**
+##### Installation
 
 1. Install git, neovim, lua, and ctags
 
@@ -99,13 +95,13 @@ Config for an Android terminal emulator — Termux.
 
     in command mode.
 
-## KeyMaps and Command Shortcuts
-
 ---
+
+## KeyMaps and Command Shortcuts
 
 ### KeyMaps
 
-**Change windows with ctrl+(hjkl)**
+##### Change windows with ctrl+(hjkl)
 
 | KeyMap |    Action    |
 |--------|--------------|
@@ -114,7 +110,7 @@ Config for an Android terminal emulator — Termux.
 | Ctrl k | Up window    |
 | Ctrl l | Right window |
 
-**Buffer**
+##### Buffer
 
 | KeyMap |      Action     |
 |--------|-----------------|
@@ -122,13 +118,13 @@ Config for an Android terminal emulator — Termux.
 | b p    | Buffer-Previous |
 | b d    | Buffer-Delete   |
 
-**Drawer File Explorer**
+##### Drawer File Explorer
 
 | KeyMap |       Action      |
 |--------|-------------------|
 | Ctrl b | `:NvimTreeToggle` |
 
-**Telescope nvim**
+##### Telescope nvim
 
 | KeyMap  |          Action         |
 |---------|-------------------------|
@@ -139,7 +135,7 @@ Config for an Android terminal emulator — Termux.
 
 ### Command Mode Shortcuts
 
-**Vim-plug**
+##### Vim-plug
 
 |  Shortcut  |  Command   |
 |------------|------------|
@@ -147,7 +143,7 @@ Config for an Android terminal emulator — Termux.
 | `:PI` | `:PlugInstall`  |
 | `:PU` | `:PlugUpdate`   |
 
-**FuzzyFinder + Tagbar**
+##### FuzzyFinder + Tagbar
 
 |  Shortcut  |  Command   |
 |------------|------------|
