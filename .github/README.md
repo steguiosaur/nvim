@@ -31,20 +31,17 @@ Config for an Android terminal emulator — Termux.
 
 **File Explorer**
 
-Fuzzy Finder
+- Fuzzy Finder
+  - `junegunn/fzf`
+  - `junegunn/fzf.vim`
 
-- `junegunn/fzf`
-- `junegunn/fzf.vim`
+- Nvim Tree
+  - `kyazdani42/nvim-web-devicons`
+  - `kyazdani42/nvim-tree.lua`
 
-Nvim Tree
-
-- `kyazdani42/nvim-web-devicons`
-- `kyazdani42/nvim-tree.lua`
-
-Telescope
-
-- `nvim-telescope/telescope.nvim`
-- `nvim-lua/plenary.nvim`
+- Telescope
+  - `nvim-telescope/telescope.nvim`
+  - `nvim-lua/plenary.nvim`
 
 **Completion, Linters, and Syntax Highlighting**
 
@@ -111,51 +108,48 @@ Telescope
 **Change windows with ctrl+(hjkl)**
 
 | KeyMap |    Action    |
-|:------:|:------------:|
+|--------|--------------|
 | Ctrl h | Left window  |
 | Ctrl j | Down window  |
 | Ctrl k | Up window    |
 | Ctrl l | Right window |
-|:------:|:-------------|
 
 **Buffer**
 
 | KeyMap |      Action     |
-|:------:|:---------------:|
+|--------|-----------------|
 | b n    | Buffer-Next     |
 | b p    | Buffer-Previous |
 | b d    | Buffer-Delete   |
-|:------:|:----------------|
 
 **Drawer File Explorer**
 
 | KeyMap |       Action      |
-|:------:|:-----------------:|
+|--------|-------------------|
 | Ctrl b | `:NvimTreeToggle` |
-|:------:|:------------------|
 
 **Telescope nvim**
 
 | KeyMap  |          Action         |
-|:-------:|:-----------------------:|
+|---------|-------------------------|
 | Spc f f | `:Telescope find_files` |
 | Spc f g | `:Telescope live_grep`  |
 | Spc f b | `:Telescope buffers`    |
 | Spc f h | `:Telescope help_tags`  |
-|:-------:|:------------------------|
 
 ### Command Mode Shortcuts
 
+**Vim-plug**
+
 |  Shortcut  |  Command   |
-|:----------:|:----------:|
-|         Vim-Plug        |
-|:-----------------------:|
+|------------|------------|
 | `:PC` | `:PlugClean`    |
 | `:PI` | `:PlugInstall`  |
 | `:PU` | `:PlugUpdate`   |
-|:-----:|:----------------|
-|       Miscellaneous     |
-|:------------------------|
+
+**FuzzyFinder + Tagbar**
+
+|  Shortcut  |  Command   |
+|------------|------------|
 | `:FZ` | `:FZF`          |
 | `:TT` | `:TagbarToggle` |
-|:-----:|:----------------|
