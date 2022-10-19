@@ -8,7 +8,7 @@ set ruler laststatus=2 showcmd showmode
 set wrap breakindent linebreak
 filetype plugin indent on
 set number relativenumber
-set clipboard=unnamedplus
+set clipboard+=unnamedplus
 set termguicolors       " about colors of something
 set encoding=utf8       " output encoding
 set shortmess+=c        " Hide or shorten certain messages
@@ -19,8 +19,8 @@ set confirm             " confirm save before quit.
 set hidden              " related to buffers
 set title
 
-let g:python3_host_prog = '$HOME/../usr/bin/python3'
-let g:python_host_prog  = '$HOME/../usr/bin/python2'
+let g:python3_host_prog = '$PREFIX/bin/python3'
+let g:python_host_prog  = '$PREFIX/bin/python2'
 
 
 " ------ KEYMAPS ------
@@ -58,6 +58,7 @@ Plug 'akinsho/bufferline.nvim', { 'tag': 'v2.*' }
 Plug 'nvim-lualine/lualine.nvim'    " statusline
 Plug 'ryanoasis/vim-devicons'       " icons
 Plug 'sam4llis/nvim-tundra'         " colorscheme
+Plug 'norcalli/nvim-colorizer.lua'  " colorHighlighter
 " Functionalities
 Plug 'mhinz/vim-startify'           " startPrompt
 Plug 'Yggdroot/indentLine'          " indention
@@ -76,7 +77,7 @@ Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'lervag/vimtex'                " LaTeX
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'norcalli/nvim-colorizer.lua'  " colorHighlighter
+Plug 'arkav/lualine-lsp-progress'
 " Git
 Plug 'tpope/vim-fugitive'           " gitCommands
 Plug 'lewis6991/gitsigns.nvim'      " gutterDiff
@@ -85,64 +86,119 @@ call plug#end()
 
 " ------ PLUGIN SETTINGS ------
 
+" colorscheme
+syntax enable
+colorscheme tundra
+
+" tagbar
+let g:tagbar_width = 20
+
+" auto pairs
+let g:AutoPairs = {'(':')', '[':']', '{':'}'}
+
+" coc.nvim
+set nobackup
+set nowritebackup
+set cmdheight=2
+set updatetime=300
+set signcolumn=yes
+autocmd CursorHold * silent call CocActionAsync('highlight')
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+let g:coc_global_extensions = [
+    \   'coc-clangd',
+    \   'coc-cmake',
+    \   'coc-css',
+    \   'coc-diagnostic',
+    \   'coc-docker',
+    \   'coc-java',
+    \   'coc-java-debug',
+    \   'coc-json',
+    \   'coc-markdownlint',
+    \   'coc-phpls',
+    \   'coc-pyright',
+    \   'coc-rust-analyzer',
+    \   'coc-sh',
+    \   'coc-sql',
+    \   'coc-tsserver',
+    \   'coc-xml',
+    \   'coc-zig',
+    \]
+
+" startify
+function! StartifyEntryFormat()
+    return 'WebDevIconsGetFileTypeSymbol(absolute_path) ." ". entry_path'
+endfunction
+let g:startify_files_number = 5
+let g:ascii = [
+            \' ',
+            \'▒█▄░▒█ ▒█▀▀▀ ▒█▀▀▀█ ▒█░░▒█ ▀█▀ ▒█▀▄▀█',
+            \'▒█▒█▒█ ▒█▀▀▀ ▒█░░▒█ ░▒█▒█░ ▒█░ ▒█▒█▒█',
+            \'▒█░░▀█ ▒█▄▄▄ ▒█▄▄▄█ ░░▀▄▀░ ▄█▄ ▒█░░▒█',
+            \' ',
+            \]
+let g:startify_custom_header =
+          \ 'startify#center(g:ascii) + startify#center(startify#fortune#boxed())'
+
 " LUA CONFIG
 lua << END
 -- Nvim Tree
 require("nvim-tree").setup{
-        renderer = {
-            indent_markers = {
-                enable = true,
-            },
-            icons = {
-                glyphs = {
-                    default = '',
-                    symlink = '',
-                },
-                show = {
-                    git = true,
-                    folder = true,
-                    file = true,
-                    folder_arrow = true,
-                }
-            }
+    renderer = {
+        indent_markers = {
+            enable = true,
         },
-        actions = {
-            open_file = {
-                window_picker = {
-                    exclude = {
-                        filetype = {
-                            "vim-plug",
-                            "qf"
-                        },
-                        buftype = {
-                            "terminal",
-                            "help"
-                        }
+        icons = {
+            glyphs = {
+                default = '',
+                symlink = '',
+            },
+            show = {
+                git = true,
+                folder = true,
+                file = true,
+                folder_arrow = true,
+            }
+        }
+    },
+    actions = {
+        open_file = {
+            window_picker = {
+                exclude = {
+                    filetype = {
+                        "vim-plug",
+                        "qf"
                     },
+                    buftype = {
+                        "terminal",
+                        "help"
+                    }
                 },
             },
         },
-        filters = {
-            exclude = {'.git', 'node_modules', '.cache'},
-        },
-        update_focused_file = { enable = true },
-        hijack_directories = { enable = true },
-        view = {
-            hide_root_folder = true,
-            mappings = {
-                list = {
-                    { key='l'   , action = "edit" },
-                    { key='o'   , action = "edit" },
-                    { key='<cr>', action = "edit" },
-                    { key='I'   , action = "toggle_ignored" },
-                    { key='H'   , action = "toggle_dotfiles" },
-                    { key='R'   , action = "refresh" },
-                    { key='='   , action = "preview" },
-                    { key='X'   , action = "xdg_open", action_cb = xdg_open }
-                }
+    },
+    filters = {
+        exclude = {'.git', 'node_modules', '.cache'},
+    },
+    update_focused_file = { enable = true },
+    hijack_directories = { enable = true },
+    view = {
+        hide_root_folder = true,
+        mappings = {
+            list = {
+                { key='l'   , action = "edit" },
+                { key='o'   , action = "edit" },
+                { key='<cr>', action = "edit" },
+                { key='I'   , action = "toggle_ignored" },
+                { key='H'   , action = "toggle_dotfiles" },
+                { key='R'   , action = "refresh" },
+                { key='='   , action = "preview" },
+                { key='X'   , action = "xdg_open", action_cb = xdg_open }
             }
-        },
-        open_on_setup = true,
+        }
+    },
+    open_on_setup = false,
 }
 
 -- Git Signs
@@ -180,69 +236,15 @@ require("bufferline").setup{
 -- Lualine
 require('lualine').setup{
     sections = {
-        lualine_c = { },
+        lualine_c = {'lsp_progress'},
         lualine_x = {'encoding' ,'filetype'},
     },
 }
 
 --colorizerLua
 require 'colorizer'.setup()
+
 END
 
 autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif
 
-
-" colorscheme
-syntax enable
-colorscheme tundra
-
-" tagbar
-let g:tagbar_width = 20
-
-" auto pairs
-let g:AutoPairs = {'(':')', '[':']', '{':'}'}
-
-" coc.nvim
-set nobackup
-set nowritebackup
-set cmdheight=2
-set updatetime=300
-set signcolumn=yes
-autocmd CursorHold * silent call CocActionAsync('highlight')
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
-let g:coc_global_extensions = [
-    \   'coc-clangd',
-    \   'coc-cmake',
-    \   'coc-css',
-    \   'coc-docker',
-    \   'coc-html',
-    \   'coc-java',
-    \   'coc-json',
-    \   'coc-markdownlint',
-    \   'coc-phpls',
-    \   'coc-pyright',
-    \   'coc-rust-analyzer',
-    \   'coc-sh',
-    \   'coc-sql',
-    \   'coc-tsserver',
-    \   'coc-word',
-    \   'coc-xml',
-    \   'coc-zig',
-    \]
-
-" startify
-function! StartifyEntryFormat()
-    return 'WebDevIconsGetFileTypeSymbol(absolute_path) ." ". entry_path'
-endfunction
-let g:startify_files_number = 5
-let g:ascii = [
-            \' ',
-            \'▒█▄░▒█ ▒█▀▀▀ ▒█▀▀▀█ ▒█░░▒█ ▀█▀ ▒█▀▄▀█',
-            \'▒█▒█▒█ ▒█▀▀▀ ▒█░░▒█ ░▒█▒█░ ▒█░ ▒█▒█▒█',
-            \'▒█░░▀█ ▒█▄▄▄ ▒█▄▄▄█ ░░▀▄▀░ ▄█▄ ▒█░░▒█',
-            \' ',
-            \]
-let g:startify_custom_header =
-          \ 'startify#center(g:ascii) + startify#center(startify#fortune#boxed())'
