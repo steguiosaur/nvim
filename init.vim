@@ -34,6 +34,7 @@ let mapleader = " "
 :command FZ FZF
 :command TT TagbarToggle
 :command PO PlantumlOpen
+:command LLP LLPStartPreview
 " change windows with ctrl+(hjkl)
 nnoremap <C-j> <C-W><C-J>
 nnoremap <C-k> <C-W><C-K>
@@ -86,6 +87,7 @@ Plug 'aklt/plantuml-syntax'         " PlantUml
 Plug 'weirongxu/plantuml-previewer.vim'
 Plug 'tyru/open-browser.vim'
 Plug 'lervag/vimtex'                " LaTeX
+Plug 'xuhdev/vim-latex-live-preview'
 " Git
 Plug 'tpope/vim-fugitive'           " gitCommands
 Plug 'lewis6991/gitsigns.nvim'      " gutterDiff
@@ -111,6 +113,11 @@ let g:AutoPairs = {'(':')', '[':']', '{':'}'}
 let g:vimtex_view_method = 'zathura'
 let g:vimtex_compiler_method = 'tectonic'
 let maplocalleader = ","
+let g:tex_flavor='latex'
+let g:vimtex_quickfix_mode=0
+set conceallevel=1
+let g:tex_conceal='abdmg'
+let g:livepreview_previewer = 'zathura'
 
 " coc.nvim
 set nobackup
@@ -132,11 +139,13 @@ let g:coc_global_extensions = [
     \   'coc-java',
     \   'coc-java-debug',
     \   'coc-json',
+    \   'coc-ltex',
     \   'coc-markdownlint',
     \   'coc-phpls',
     \   'coc-pyright',
     \   'coc-rust-analyzer',
     \   'coc-sh',
+    \   'coc-snippets',
     \   'coc-sql',
     \   'coc-tsserver',
     \   'coc-xml',
