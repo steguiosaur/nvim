@@ -61,6 +61,7 @@ Plug 'nvim-lualine/lualine.nvim'    " statusline
 Plug 'ryanoasis/vim-devicons'       " icons
 Plug 'sam4llis/nvim-tundra'         " colorscheme
 Plug 'norcalli/nvim-colorizer.lua'  " colorHighlighter
+"Plug 'andweeb/presence.nvim'
 " Functionalities
 Plug 'mhinz/vim-startify'           " startPrompt
 Plug 'Yggdroot/indentLine'          " indention
