@@ -13,6 +13,7 @@ set termguicolors       " about colors of something
 set encoding=utf8       " output encoding
 set shortmess+=c        " Hide or shorten certain messages
 set textwidth=0         " adjust width max 80 char
+set scrolloff=2
 set showmatch           " show matching
 set modeline            " enable vim modelines
 set confirm             " confirm save before quit.
@@ -37,13 +38,14 @@ nnoremap <C-k> <C-W><C-K>
 nnoremap <C-l> <C-W><C-L>
 nnoremap <C-h> <C-W><C-H>
 " buffer mappings
-map bn :bn<cr>
-map bp :bp<cr>
-map bd :bdelete<cr>
+map <S-l> :bn<cr>
+map <S-h> :bp<cr>
+map <S-x> :bdelete<cr>
+nmap<silent> <leader>q :q<cr>
 " remove highlight
 nnoremap<silent> <esc><esc> :noh<return>
 " file explorer
-nmap<silent> <C-b> :NvimTreeToggle<cr>
+nmap<silent> <leader>e :NvimTreeToggle<cr>
 " Telescope.nvim
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
@@ -75,7 +77,6 @@ Plug 'nvim-lua/plenary.nvim'        " layout
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 " Completion Linters
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'lervag/vimtex'                " LaTeX
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'arkav/lualine-lsp-progress'
 " Git
@@ -89,6 +90,9 @@ call plug#end()
 " colorscheme
 syntax enable
 colorscheme tundra
+
+" indentLine
+let g:indentLine_char = '▏'
 
 " tagbar
 let g:tagbar_width = 20
@@ -112,6 +116,7 @@ let g:coc_global_extensions = [
     \   'coc-css',
     \   'coc-diagnostic',
     \   'coc-docker',
+    \   'coc-html',
     \   'coc-java',
     \   'coc-java-debug',
     \   'coc-json',
@@ -123,6 +128,7 @@ let g:coc_global_extensions = [
     \   'coc-sql',
     \   'coc-tsserver',
     \   'coc-xml',
+    \   'coc-yaml',
     \   'coc-zig',
     \]
 
@@ -133,16 +139,25 @@ endfunction
 let g:startify_files_number = 5
 let g:ascii = [
             \' ',
-            \'▒█▄░▒█ ▒█▀▀▀ ▒█▀▀▀█ ▒█░░▒█ ▀█▀ ▒█▀▄▀█',
-            \'▒█▒█▒█ ▒█▀▀▀ ▒█░░▒█ ░▒█▒█░ ▒█░ ▒█▒█▒█',
-            \'▒█░░▀█ ▒█▄▄▄ ▒█▄▄▄█ ░░▀▄▀░ ▄█▄ ▒█░░▒█',
+            \'        ▒█▄░▒█ ▒█▀▀▀ ▒█▀▀▀█ ▒█░░▒█ ▀█▀ ▒█▀▄▀█',
+            \'        ▒█▒█▒█ ▒█▀▀▀ ▒█░░▒█ ░▒█▒█░ ▒█░ ▒█▒█▒█',
+            \'        ▒█░░▀█ ▒█▄▄▄ ▒█▄▄▄█ ░░▀▄▀░ ▄█▄ ▒█░░▒█',
             \' ',
             \]
 let g:startify_custom_header =
-          \ 'startify#center(g:ascii) + startify#center(startify#fortune#boxed())'
+            \ 'startify#pad(g:ascii + startify#fortune#boxed())'
 
 " LUA CONFIG
-lua << END
+lua << EOF
+
+-- TreeSitter
+require'nvim-treesitter.configs'.setup {
+    ensure_installed = { "c", "lua", "java", "rust", "javascript"},
+    highlight = {
+        enable = true,
+    },
+}
+
 -- Nvim Tree
 require("nvim-tree").setup{
     renderer = {
@@ -244,7 +259,7 @@ require('lualine').setup{
 --colorizerLua
 require 'colorizer'.setup()
 
-END
+EOF
 
 autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif
 
