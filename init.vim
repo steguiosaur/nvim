@@ -13,15 +13,16 @@ set termguicolors       " about colors of something
 set encoding=utf8       " output encoding
 set shortmess+=c        " Hide or shorten certain messages
 set textwidth=0         " adjust width max 80 char
-set scrolloff=2
+set scrolloff=5
 set showmatch           " show matching
 set modeline            " enable vim modelines
 set confirm             " confirm save before quit.
+set mouse=a
 set hidden              " related to buffers
 set title
 
-let g:python3_host_prog = '$PREFIX/bin/python3'
-let g:python_host_prog  = '$PREFIX/bin/python2'
+let g:python3_host_prog = '/usr/bin/python'
+let g:python_host_prog  = '/usr/bin/python2'
 
 
 " ------ KEYMAPS ------
@@ -32,6 +33,7 @@ let mapleader = " "
 :command PU PlugUpdate
 :command FZ FZF
 :command TT TagbarToggle
+:command PO PlantumlOpen
 " change windows with ctrl+(hjkl)
 nnoremap <C-j> <C-W><C-J>
 nnoremap <C-k> <C-W><C-K>
@@ -80,9 +82,10 @@ Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'arkav/lualine-lsp-progress'
-Plug 'aklt/plantuml-syntax'
+Plug 'aklt/plantuml-syntax'         " PlantUml
 Plug 'weirongxu/plantuml-previewer.vim'
 Plug 'tyru/open-browser.vim'
+Plug 'lervag/vimtex'                " LaTeX
 " Git
 Plug 'tpope/vim-fugitive'           " gitCommands
 Plug 'lewis6991/gitsigns.nvim'      " gutterDiff
@@ -103,6 +106,11 @@ let g:tagbar_width = 20
 
 " auto pairs
 let g:AutoPairs = {'(':')', '[':']', '{':'}'}
+
+" LaTeX
+let g:vimtex_view_method = 'zathura'
+let g:vimtex_compiler_method = 'tectonic'
+let maplocalleader = ","
 
 " coc.nvim
 set nobackup
