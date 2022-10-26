@@ -80,6 +80,9 @@ Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'arkav/lualine-lsp-progress'
+Plug 'aklt/plantuml-syntax'
+Plug 'weirongxu/plantuml-previewer.vim'
+Plug 'tyru/open-browser.vim'
 " Git
 Plug 'tpope/vim-fugitive'           " gitCommands
 Plug 'lewis6991/gitsigns.nvim'      " gutterDiff
@@ -104,7 +107,7 @@ let g:AutoPairs = {'(':')', '[':']', '{':'}'}
 " coc.nvim
 set nobackup
 set nowritebackup
-set cmdheight=2
+set cmdheight=1
 set updatetime=300
 set signcolumn=yes
 autocmd CursorHold * silent call CocActionAsync('highlight')
@@ -223,9 +226,9 @@ require('gitsigns').setup()
 -- Bufferline
 require("bufferline").setup{
     options = {
-        buffer_close_icon = '',
-        modified_icon = '•', -- 
-        close_icon = '',
+        buffer_close_icon = '',
+        modified_icon = '', -- 
+        close_icon = '',
         show_close_icon = true,
         left_trunc_marker = '',
         right_trunc_marker = '',
