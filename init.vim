@@ -55,7 +55,7 @@ nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 " PlantUML
 :command PO PlantumlOpen            " PlantUML Preview
-nnoremap <leader>lm <cmd>PlantumlOpen<cr>
+nnoremap <leader>lm <cmd>PO<cr>
 
 
 " ------ PLUGINS ------
