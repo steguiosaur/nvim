@@ -16,6 +16,7 @@ set encoding=utf8       " output encoding
 set shortmess+=c        " Hide or shorten messages
 set textwidth=0         " adjust width <charMAX=80>
 set scrolloff=5         " offsets scroll on edge
+set cursorline          " show current line
 set showmatch           " show matching words
 set modeline            " enable vim modelines
 set confirm             " confirm save before quit.
@@ -118,7 +119,7 @@ set conceallevel=0
 let g:tex_flavor='latex'
 let g:vimtex_syntax_conceal_disable = 1
 let g:vimtex_quickfix_mode=1
-let g:vimtex_view_method = 'zathura' " zathura
+let g:vimtex_view_method = 'zathura'
 "let g:vimtex_compiler_method = 'tectonic'
 
 " coc.nvim
@@ -162,9 +163,9 @@ endfunction
 let g:startify_files_number = 5
 let g:ascii = [
             \' ',
-            \'        ▒█▄░▒█ ▒█▀▀▀ ▒█▀▀▀█ ▒█░░▒█ ▀█▀ ▒█▀▄▀█',
-            \'        ▒█▒█▒█ ▒█▀▀▀ ▒█░░▒█ ░▒█▒█░ ▒█░ ▒█▒█▒█',
-            \'        ▒█░░▀█ ▒█▄▄▄ ▒█▄▄▄█ ░░▀▄▀░ ▄█▄ ▒█░░▒█',
+            \' ▒█▄░▒█ ▒█▀▀▀ ▒█▀▀▀█ ▒█░░▒█ ▀█▀ ▒█▀▄▀█',
+            \' ▒█▒█▒█ ▒█▀▀▀ ▒█░░▒█ ░▒█▒█░ ▒█░ ▒█▒█▒█',
+            \' ▒█░░▀█ ▒█▄▄▄ ▒█▄▄▄█ ░░▀▄▀░ ▄█▄ ▒█░░▒█',
             \' ',
             \]
 let g:startify_custom_header =
