@@ -3,7 +3,7 @@
 
 Neovim configuration
 
-![NEOVIM](./screenshots/Screenshot_Arch.jpg)
+![NEOVIM](./screenshots/Screenshot_Arch.png)
 
 ---
 
