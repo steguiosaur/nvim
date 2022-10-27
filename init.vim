@@ -1,38 +1,42 @@
-" NEOVIM CONFIG 221027
+" ============== NEOVIM CONFIG 221027 ===============
 
-" ------ OPTIONS ------
-set tabstop=4 softtabstop=4 shiftwidth=4 expandtab smarttab autoindent
-set incsearch ignorecase smartcase hlsearch
-set wildmode=longest,list,full wildmenu
-set ruler laststatus=2 showcmd showmode
-set wrap breakindent linebreak
+" ===================== OPTIONS =====================
+set wildignore=*.docx,*.pdf,*.jpg,*.png,*.gif,*.img
+set expandtab smarttab softtabstop=4 tabstop=4 
+set hlsearch incsearch ignorecase smartcase
+set wildmenu wildmode=longest,list,full
+set laststatus=2 ruler showcmd showmode
+set breakindent linebreak wrap
+set autoindent shiftwidth=4
+set clipboard+=unnamedplus
 filetype plugin indent on
 set number relativenumber
-set clipboard+=unnamedplus
 set termguicolors       " about colors of something
 set encoding=utf8       " output encoding
-set shortmess+=c        " Hide or shorten certain messages
-set textwidth=0         " adjust width max 80 char
-set scrolloff=5         " offsets scroll
-set showmatch           " show matching
+set shortmess+=c        " Hide or shorten messages
+set textwidth=0         " adjust width <charMAX=80>
+set scrolloff=5         " offsets scroll on edge
+set showmatch           " show matching words
 set modeline            " enable vim modelines
 set confirm             " confirm save before quit.
-set mouse=a             " mouse enabled
+set mouse=a             " mouse interact enabled
 set hidden              " related to buffers
-set title
+set title               " show file title
 
 let g:python3_host_prog = '/usr/bin/python'
 let g:python_host_prog  = '/usr/bin/python2'
+" swapfiles
+set directory^=$HOME/.nvim/tmp//
 
 
-" ------ KEYMAPS ------
+" ===================== KEYMAPS =====================
 let mapleader = " "
 " vimPlug
-:command PC PlugClean               " Remove unused plugins
-:command PI PlugInstall             " Install plugins
-:command PU PlugUpdate              " Update plugins
-:command FZ FZF                     " FuzzyFinder
-:command TT TagbarToggle            " TagBar
+:command PC PlugClean       " Remove unused plugins
+:command PI PlugInstall     " Install plugins
+:command PU PlugUpdate      " Update plugins
+:command FZ FZF             " FuzzyFinder
+:command TT TagbarToggle    " TagBar
 " change windows with ctrl+(hjkl)
 nnoremap <C-j> <C-W><C-J>
 nnoremap <C-k> <C-W><C-K>
@@ -54,11 +58,11 @@ nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 " PlantUML
-:command PO PlantumlOpen            " PlantUML Preview
+:command PO PlantumlOpen    " PlantUML Preview
 nnoremap <leader>lm <cmd>PO<cr>
 
 
-" ------ PLUGINS ------
+" ===================== PLUGINS =====================
 call plug#begin()
 " Aesthetics
 Plug 'akinsho/bufferline.nvim', { 'tag': 'v2.*' }
@@ -94,8 +98,7 @@ Plug 'lewis6991/gitsigns.nvim'      " gutterDiff
 call plug#end()
 
 
-" ------ PLUGIN SETTINGS ------
-
+" ================ PLUGINS SETTINGS =================
 " colorscheme
 syntax enable
 colorscheme tundra
@@ -110,8 +113,12 @@ let g:tagbar_width = 25
 let g:AutoPairs = {'(':')', '[':']', '{':'}'}
 
 " LaTeX
-let maplocalleader = " "        " <leader>ll LivePreview
-let g:vimtex_view_method = 'zathura'
+let maplocalleader = " "    " <leader>ll LivePreview
+set conceallevel=0
+let g:tex_flavor='latex'
+let g:vimtex_syntax_conceal_disable = 1
+let g:vimtex_quickfix_mode=1
+let g:vimtex_view_method = 'zathura' " zathura
 "let g:vimtex_compiler_method = 'tectonic'
 
 " coc.nvim
@@ -164,9 +171,8 @@ let g:startify_custom_header =
             \ 'startify#pad(g:ascii + startify#fortune#boxed())'
 
 
-" LUA CONFIG
+" =================== LUA CONFIG ====================
 lua << EOF
-
 -- TreeSitter
 require'nvim-treesitter.configs'.setup {
     ensure_installed = { "c", "lua", "java", "rust", "javascript"},
