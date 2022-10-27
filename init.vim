@@ -1,4 +1,4 @@
-" NEOVIM CONFIG 220927
+" NEOVIM CONFIG 221027
 
 " ------ OPTIONS ------
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab smarttab autoindent
@@ -13,11 +13,11 @@ set termguicolors       " about colors of something
 set encoding=utf8       " output encoding
 set shortmess+=c        " Hide or shorten certain messages
 set textwidth=0         " adjust width max 80 char
-set scrolloff=5
+set scrolloff=5         " offsets scroll
 set showmatch           " show matching
 set modeline            " enable vim modelines
 set confirm             " confirm save before quit.
-set mouse=a
+set mouse=a             " mouse enabled
 set hidden              " related to buffers
 set title
 
@@ -28,13 +28,13 @@ let g:python_host_prog  = '/usr/bin/python2'
 " ------ KEYMAPS ------
 let mapleader = " "
 " vimPlug
-:command PC PlugClean
-:command PI PlugInstall
-:command PU PlugUpdate
-:command FZ FZF
-:command TT TagbarToggle
-:command PO PlantumlOpen
-:command LLP LLPStartPreview
+:command PC PlugClean               " Remove unused plugins
+:command PI PlugInstall             " Install plugins
+:command PU PlugUpdate              " Update plugins
+:command FZ FZF                     " FuzzyFinder
+:command TT TagbarToggle            " TagBar
+:command PO PlantumlOpen            " PlantUML Preview
+:command LLP LLPStartPreview        " LaTex Preview
 " change windows with ctrl+(hjkl)
 nnoremap <C-j> <C-W><C-J>
 nnoremap <C-k> <C-W><C-K>
@@ -49,6 +49,7 @@ nmap<silent> <leader>q :q<cr>
 nnoremap<silent> <esc><esc> :noh<return>
 " file explorer
 nmap<silent> <leader>e :NvimTreeToggle<cr>
+nmap<silent> <leader>t :TagbarToggle<cr>
 " Telescope.nvim
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
@@ -64,7 +65,7 @@ Plug 'nvim-lualine/lualine.nvim'    " statusline
 Plug 'ryanoasis/vim-devicons'       " icons
 Plug 'sam4llis/nvim-tundra'         " colorscheme
 Plug 'norcalli/nvim-colorizer.lua'  " colorHighlighter
-"Plug 'andweeb/presence.nvim'
+"Plug 'andweeb/presence.nvim'       " show on Discord
 " Functionalities
 Plug 'mhinz/vim-startify'           " startPrompt
 Plug 'Yggdroot/indentLine'          " indention
@@ -82,11 +83,11 @@ Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 " Completion Linters
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'arkav/lualine-lsp-progress'
-Plug 'aklt/plantuml-syntax'         " PlantUml
+Plug 'arkav/lualine-lsp-progress'   " diagnostic progress
+Plug 'aklt/plantuml-syntax'         " PlantUml ==========
 Plug 'weirongxu/plantuml-previewer.vim'
 Plug 'tyru/open-browser.vim'
-Plug 'lervag/vimtex'                " LaTeX
+Plug 'lervag/vimtex'                " LaTeX =============
 Plug 'xuhdev/vim-latex-live-preview'
 " Git
 Plug 'tpope/vim-fugitive'           " gitCommands
@@ -104,7 +105,7 @@ colorscheme tundra
 let g:indentLine_char = '▏'
 
 " tagbar
-let g:tagbar_width = 20
+let g:tagbar_width = 25
 
 " auto pairs
 let g:AutoPairs = {'(':')', '[':']', '{':'}'}
@@ -167,6 +168,7 @@ let g:ascii = [
             \]
 let g:startify_custom_header =
             \ 'startify#pad(g:ascii + startify#fortune#boxed())'
+
 
 " LUA CONFIG
 lua << EOF
@@ -271,6 +273,7 @@ require("bufferline").setup{
 
 -- Lualine
 require('lualine').setup{
+    options = { theme = 'nightfly' },
     sections = {
         lualine_c = {'lsp_progress'},
         lualine_x = {'encoding' ,'filetype'},

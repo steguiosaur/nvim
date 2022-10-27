@@ -1,15 +1,17 @@
 
 # NEOVIM Config
 
-Config for an Android terminal emulator — Termux.
+Neovim configuration
 
-![NEOVIM](./screenshots/Screenshot_1.jpg)
+![NEOVIM](./screenshots/Screenshot_Arch.jpg)
 
 ---
 
 ## Features
 
 > Configurable under `~/.config/nvim/init.vim`
+- PlantUML Previewer
+- LaTeX Previewer
 
 ##### Aesthetics
 
@@ -68,10 +70,10 @@ Config for an Android terminal emulator — Termux.
 
 ##### Installation
 
-1. Install git, neovim, lua, and ctags
+1. Install git, neovim, and ctags
 
     ```console
-    apt install git lua neovim ctags
+    apt install git neovim ctags
     ```
 
 2. Install plugin manager (preferably Vim-plug)
@@ -112,11 +114,11 @@ Config for an Android terminal emulator — Termux.
 
 ##### Buffer
 
-| KeyMap |      Action     |
-|--------|-----------------|
-| b n    | Buffer-Next     |
-| b p    | Buffer-Previous |
-| b d    | Buffer-Delete   |
+| KeyMap  |      Action     |
+|---------|-----------------|
+| Shift l | Buffer-Next     |
+| Shift h | Buffer-Previous |
+| Shift x | Buffer-Delete   |
 
 ##### Drawer File Explorer
 
