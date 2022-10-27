@@ -135,6 +135,12 @@ Neovim configuration
 | Spc f b | `:Telescope buffers`    |
 | Spc f h | `:Telescope help_tags`  |
 
+##### Preview
+| KeyMap  |   Action    |    Command    |
+|---------|-------------|---------------|
+| Spc l l | TeX Preview |               |
+| Spc l m | UML Preview | :PlantumlOpen |
+
 ### Command Mode Shortcuts
 
 ##### Vim-plug

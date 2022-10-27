@@ -33,8 +33,6 @@ let mapleader = " "
 :command PU PlugUpdate              " Update plugins
 :command FZ FZF                     " FuzzyFinder
 :command TT TagbarToggle            " TagBar
-:command PO PlantumlOpen            " PlantUML Preview
-:command LLP LLPStartPreview        " LaTex Preview
 " change windows with ctrl+(hjkl)
 nnoremap <C-j> <C-W><C-J>
 nnoremap <C-k> <C-W><C-K>
@@ -55,6 +53,9 @@ nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+" PlantUML
+:command PO PlantumlOpen            " PlantUML Preview
+nnoremap <leader>lm <cmd>PlantumlOpen<cr>
 
 
 " ------ PLUGINS ------
@@ -65,7 +66,6 @@ Plug 'nvim-lualine/lualine.nvim'    " statusline
 Plug 'ryanoasis/vim-devicons'       " icons
 Plug 'sam4llis/nvim-tundra'         " colorscheme
 Plug 'norcalli/nvim-colorizer.lua'  " colorHighlighter
-"Plug 'andweeb/presence.nvim'       " show on Discord
 " Functionalities
 Plug 'mhinz/vim-startify'           " startPrompt
 Plug 'Yggdroot/indentLine'          " indention
@@ -86,9 +86,8 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'arkav/lualine-lsp-progress'   " diagnostic progress
 Plug 'aklt/plantuml-syntax'         " PlantUml ==========
 Plug 'weirongxu/plantuml-previewer.vim'
-Plug 'tyru/open-browser.vim'
+Plug 'tyru/open-browser.vim'        " Preview in Browser
 Plug 'lervag/vimtex'                " LaTeX =============
-Plug 'xuhdev/vim-latex-live-preview'
 " Git
 Plug 'tpope/vim-fugitive'           " gitCommands
 Plug 'lewis6991/gitsigns.nvim'      " gutterDiff
@@ -111,14 +110,9 @@ let g:tagbar_width = 25
 let g:AutoPairs = {'(':')', '[':']', '{':'}'}
 
 " LaTeX
+let maplocalleader = " "        " <leader>ll LivePreview
 let g:vimtex_view_method = 'zathura'
-let g:vimtex_compiler_method = 'tectonic'
-let maplocalleader = ","
-let g:tex_flavor='latex'
-let g:vimtex_quickfix_mode=0
-set conceallevel=1
-let g:tex_conceal='abdmg'
-let g:livepreview_previewer = 'zathura'
+"let g:vimtex_compiler_method = 'tectonic'
 
 " coc.nvim
 set nobackup
