@@ -138,6 +138,7 @@ let g:coc_global_extensions = [
     \   'coc-css',
     \   'coc-diagnostic',
     \   'coc-docker',
+    \   'coc-go',
     \   'coc-html',
     \   'coc-java',
     \   'coc-java-debug',
