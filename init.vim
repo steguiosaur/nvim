@@ -108,7 +108,7 @@ colorscheme tundra
 let g:indentLine_char = '▏'
 
 " tagbar
-let g:tagbar_width = 25
+let g:tagbar_width = 30
 
 " auto pairs
 let g:AutoPairs = {'(':')', '[':']', '{':'}'}

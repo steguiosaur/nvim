@@ -13,14 +13,14 @@ Neovim configuration
 - PlantUML Previewer
 - LaTeX Previewer
 
-##### Aesthetics
+### Aesthetics
 
 - Buffer - `akinsho/bufferline.nvim`
 - Statusline - `nvim-lualine/lualine.nvim`
 - Icons - `ryanoasis/vim-devicons`
 - Colorscheme - `sam4llis/nvim-tundra`
 
-##### Functionality
+### Functionality
 
 - Start Prompt- `mhinz/vim-startify`
 - Indentation - `Yggdroot/indentLine`
@@ -29,7 +29,7 @@ Neovim configuration
 - Command - `folke/which-key.nvim`
 - Terminal - `akinsho/toggleterm.nvim`
 
-##### File Explorer
+### File Explorer
 
 - Fuzzy Finder
   - `junegunn/fzf`
@@ -43,32 +43,32 @@ Neovim configuration
   - `nvim-telescope/telescope.nvim`
   - `nvim-lua/plenary.nvim`
 
-##### Completion, Linters, and Syntax Highlighting
+### Completion, Linters, and Syntax Highlighting
 
 - LSP - `neoclide/coc.nvim`
 - LaTeX - `lervag/vimtex`
 - Syntax Highlighting - `nvim-treesitter/nvim-treesitter`
 - Color Value Highlighter - `norcalli/nvim-colorizer.lua`
 
-##### Git
+### Git
 
 - Git Command Mode - `tpope/vim-fugitive`
 - Gutter Changes - `lewis6991/gitsigns.nvim`
 
 ## Setup
 
-##### Required
+### Required
 
 - Neovim
 - Git
 - Lua
 - [Vim-Plug (Plugin Manager)](https://github.com/junegunn/vim-plug )
 
-##### Optional
+### Optional
 
 - Ctags (for :TagbarToggle)
 
-##### Installation
+### Installation
 
 1. Install git, neovim, and ctags
 
@@ -108,7 +108,7 @@ Neovim configuration
 
 ### KeyMaps
 
-##### Change windows with ctrl+(hjkl)
+#### Change windows with ctrl+(hjkl)
 
 | KeyMap |    Action    |
 |--------|--------------|
@@ -117,7 +117,7 @@ Neovim configuration
 | Ctrl k | Up window    |
 | Ctrl l | Right window |
 
-##### Buffer
+#### Buffer
 
 | KeyMap  |      Action     |
 |---------|-----------------|
@@ -125,13 +125,13 @@ Neovim configuration
 | Shift h | Buffer-Previous |
 | Shift x | Buffer-Delete   |
 
-##### Drawer File Explorer
+#### Drawer File Explorer
 
 | KeyMap |       Action      |
 |--------|-------------------|
 | Ctrl b | `:NvimTreeToggle` |
 
-##### Telescope nvim
+#### Telescope nvim
 
 | KeyMap  |          Action         |
 |---------|-------------------------|
@@ -140,7 +140,7 @@ Neovim configuration
 | Spc f b | `:Telescope buffers`    |
 | Spc f h | `:Telescope help_tags`  |
 
-##### Preview
+#### Preview
 | KeyMap  |   Action    |    Command    |
 |---------|-------------|---------------|
 | Spc l l | TeX Preview |               |
@@ -148,7 +148,7 @@ Neovim configuration
 
 ### Command Mode Shortcuts
 
-##### Vim-plug
+#### Vim-plug
 
 |  Shortcut  |  Command   |
 |------------|------------|
@@ -156,7 +156,7 @@ Neovim configuration
 | `:PI` | `:PlugInstall`  |
 | `:PU` | `:PlugUpdate`   |
 
-##### FuzzyFinder + Tagbar
+#### FuzzyFinder + Tagbar
 
 |  Shortcut  |  Command   |
 |------------|------------|
