@@ -86,6 +86,11 @@ Neovim configuration
     ```console
     git clone https://github.com/steguiosaur/nvim ~/.config/nvim
     ```
+    
+    > For Termux - Android Terminal Emulator
+    ```console
+    git clone -b termux https://github.com/steguiosaur/nvim ~/.config/nvim
+    ```
 
 4. Install Packages
 
