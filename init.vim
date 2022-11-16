@@ -132,6 +132,9 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
+nmap <silent> gb <Plug>(coc-diagnostic-prev)
+nmap <silent> gn <Plug>(coc-diagnostic-next)
+
 let g:coc_global_extensions = [
     \   'coc-clangd',
     \   'coc-cmake',

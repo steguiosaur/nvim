@@ -10,6 +10,7 @@ Neovim configuration
 ## Features
 
 > Configurable under `~/.config/nvim/init.vim`
+
 - PlantUML Previewer
 - LaTeX Previewer
 
@@ -117,6 +118,13 @@ Neovim configuration
 | Ctrl k | Up window    |
 | Ctrl l | Right window |
 
+#### Create Window
+
+|  KeyMap  |       Action      |
+|----------|-------------------|
+| Ctrl w v | Vertical window   |
+| Ctrl w s | Horizontal window |
+
 #### Buffer
 
 | KeyMap  |      Action     |
@@ -141,10 +149,18 @@ Neovim configuration
 | Spc f h | `:Telescope help_tags`  |
 
 #### Preview
+
 | KeyMap  |   Action    |    Command    |
 |---------|-------------|---------------|
 | Spc l l | TeX Preview |               |
 | Spc l m | UML Preview | :PlantumlOpen |
+
+#### Check Diagnostics
+
+| KeyMap |        Action       |
+|--------|---------------------|
+| g b    | coc-diagnostic-prev |
+| g n    | coc-diagnostic-next |
 
 ### Command Mode Shortcuts
 
