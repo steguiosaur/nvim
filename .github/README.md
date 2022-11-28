@@ -1,4 +1,3 @@
-
 # NEOVIM Config
 
 Neovim configuration
@@ -87,8 +86,9 @@ Neovim configuration
     ```console
     git clone https://github.com/steguiosaur/nvim ~/.config/nvim
     ```
-    
+
     > For Termux - Android Terminal Emulator
+
     ```console
     git clone -b termux https://github.com/steguiosaur/nvim ~/.config/nvim
     ```
@@ -148,12 +148,12 @@ Neovim configuration
 | Spc f b | `:Telescope buffers`    |
 | Spc f h | `:Telescope help_tags`  |
 
-#### Preview
+#### Previewer
 
 | KeyMap  |   Action    |    Command    |
 |---------|-------------|---------------|
 | Spc l l | TeX Preview |               |
-| Spc l m | UML Preview | :PlantumlOpen |
+| Spc l p | UML Preview | :PlantumlOpen |
 
 #### Check Diagnostics
 

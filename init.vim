@@ -1,4 +1,4 @@
-" ============== NEOVIM CONFIG 221027 ===============
+" ============== NEOVIM CONFIG 221028 ===============
 
 " ===================== OPTIONS =====================
 set wildignore=*.docx,*.pdf,*.jpg,*.png,*.gif,*.img
@@ -60,7 +60,9 @@ nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 " PlantUML
 :command PO PlantumlOpen    " PlantUML Preview
-nnoremap <leader>lm <cmd>PO<cr>
+nnoremap <leader>lp <cmd>PO<cr>
+" MarkdownPreview
+nmap<silent> <leader>lm :MarkdownPreview<cr>
 
 
 " ===================== PLUGINS =====================
@@ -88,6 +90,7 @@ Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 " Completion Linters
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'puremourning/vimspector'
 Plug 'arkav/lualine-lsp-progress'   " diagnostic progress
 Plug 'aklt/plantuml-syntax'         " PlantUml ==========
 Plug 'weirongxu/plantuml-previewer.vim'
