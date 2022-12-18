@@ -31,8 +31,6 @@ set directory^=$HOME/.nvim/tmp//
 
 
 " ===================== KEYMAPS =====================
-nnoremap j gj
-nnoremap k gk
 let mapleader = " "
 " vimPlug
 :command PC PlugClean       " Remove unused plugins
@@ -62,9 +60,7 @@ nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 " PlantUML
 :command PO PlantumlOpen    " PlantUML Preview
-nnoremap <leader>lp <cmd>PO<cr>
-" MarkdownPreview
-nmap<silent> <leader>lm :MarkdownPreview<cr>
+nnoremap <leader>lm <cmd>PO<cr>
 
 
 " ===================== PLUGINS =====================
