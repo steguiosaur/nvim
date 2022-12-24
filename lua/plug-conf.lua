@@ -1,7 +1,14 @@
 
 -- TreeSitter
 require'nvim-treesitter.configs'.setup {
-    ensure_installed = { "c", "lua", "java", "rust", "javascript"},
+    ensure_installed = {
+        "c",
+        "lua",
+        "java",
+        "rust",
+        "javascript",
+        "python"
+    },
     highlight = {
         enable = true,
     },
