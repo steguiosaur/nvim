@@ -1,3 +1,4 @@
 {
-
+    "rust-analyzer.disableProgressNotifications":"true",
+    "rust-analyzer.serverPath": "/usr/bin/rust-analyzer"
 }

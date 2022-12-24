@@ -17,6 +17,7 @@ set shortmess+=c        " Hide or shorten messages
 set textwidth=0         " adjust width <charMAX=80>
 set scrolloff=5         " offsets scroll on edge
 set cursorline          " show current line
+set conceallevel=0
 set showmatch           " show matching words
 set modeline            " enable vim modelines
 set confirm             " confirm save before quit.
@@ -92,7 +93,7 @@ Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 " Completion Linters
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'puremourning/vimspector'
+"Plug 'puremourning/vimspector'
 Plug 'arkav/lualine-lsp-progress'   " diagnostic progress
 Plug 'aklt/plantuml-syntax'         " PlantUml ==========
 Plug 'weirongxu/plantuml-previewer.vim'
@@ -111,6 +112,7 @@ colorscheme tundra
 
 " indentLine
 let g:indentLine_char = '▏'
+let g:indentLine_concealcursor = ""
 
 " tagbar
 let g:tagbar_width = 30
@@ -120,7 +122,6 @@ let g:AutoPairs = {'(':')', '[':']', '{':'}'}
 
 " LaTeX
 let maplocalleader = " "    " <leader>ll LivePreview
-set conceallevel=0
 let g:tex_flavor='latex'
 let g:vimtex_syntax_conceal_disable = 1
 let g:vimtex_quickfix_mode=1
@@ -182,118 +183,5 @@ let g:startify_custom_header =
 
 
 " =================== LUA CONFIG ====================
-lua << EOF
--- TreeSitter
-require'nvim-treesitter.configs'.setup {
-    ensure_installed = { "c", "lua", "java", "rust", "javascript"},
-    highlight = {
-        enable = true,
-    },
-}
-
--- Nvim Tree
-require("nvim-tree").setup{
-    renderer = {
-        indent_markers = {
-            enable = true,
-        },
-        icons = {
-            glyphs = {
-                default = '',
-                symlink = '',
-            },
-            show = {
-                git = true,
-                folder = true,
-                file = true,
-                folder_arrow = true,
-            }
-        }
-    },
-    actions = {
-        open_file = {
-            window_picker = {
-                exclude = {
-                    filetype = {
-                        "vim-plug",
-                        "qf"
-                    },
-                    buftype = {
-                        "terminal",
-                        "help"
-                    }
-                },
-            },
-        },
-    },
-    filters = {
-        exclude = {'.git', 'node_modules', '.cache'},
-    },
-    update_focused_file = { enable = true },
-    hijack_directories = { enable = true },
-    view = {
-        hide_root_folder = true,
-        mappings = {
-            list = {
-                { key='l'   , action = "edit" },
-                { key='o'   , action = "edit" },
-                { key='<cr>', action = "edit" },
-                { key='I'   , action = "toggle_ignored" },
-                { key='H'   , action = "toggle_dotfiles" },
-                { key='R'   , action = "refresh" },
-                { key='='   , action = "preview" },
-                { key='X'   , action = "xdg_open", action_cb = xdg_open }
-            }
-        }
-    },
-    open_on_setup = false,
-}
-
--- Git Signs
-require('gitsigns').setup()
-
--- Bufferline
-require("bufferline").setup{
-    options = {
-        buffer_close_icon = '',
-        modified_icon = '', -- 
-        close_icon = '',
-        show_close_icon = true,
-        left_trunc_marker = '',
-        right_trunc_marker = '',
-        color_icons = true,
-        offsets = {
-            {
-                filetype = "NvimTree",
-                text = "File Explorer" ,
-                text_align = "center",
-                separator = false
-            },
-        },
-    },
-    highlights = {
-    	buffer_selected = { italic = false },
-    	diagnostic_selected = { italic = false },
-    	hint_selected = { italic = false },
-    	pick_selected = { italic = false },
-    	pick_visible = { italic = false },
-    	pick = { italic = false },
-    },
-}
-
--- Lualine
-require('lualine').setup{
-    options = { theme = 'nightfly' },
-    sections = {
-        lualine_c = {'lsp_progress'},
-        lualine_x = {'encoding' ,'filetype'},
-    },
-}
-
---colorizerLua
-require 'colorizer'.setup()
-
-EOF
-
+lua require('plug-conf')
 autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif
-
