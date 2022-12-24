@@ -1,4 +1,10 @@
 {
-    "rust-analyzer.disableProgressNotifications":"true",
-    "rust-analyzer.serverPath": "/usr/bin/rust-analyzer"
+    "rust-analyzer.disableProgressNotifications": true,
+    "rust-analyzer.serverPath": "/usr/bin/rust-analyzer",
+    
+    "inlayHint.enable": false,
+
+    "pyright.inlayHints.variableTypes": false,
+
+    "clangd.inlayHint.enable": false
 }
