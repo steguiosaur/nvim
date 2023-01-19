@@ -42,15 +42,17 @@ let mapleader = " "
 :command FZ FZF             " FuzzyFinder
 :command TT TagbarToggle    " TagBar
 " change windows with ctrl+(hjkl)
-nnoremap <C-j> <C-W><C-J>
-nnoremap <C-k> <C-W><C-K>
-nnoremap <C-l> <C-W><C-L>
-nnoremap <C-h> <C-W><C-H>
+nnoremap <S-j> <C-W><C-J>
+nnoremap <S-k> <C-W><C-K>
+nnoremap <S-l> <C-W><C-L>
+nnoremap <S-h> <C-W><C-H>
 " buffer mappings
-map <S-l> :bn<cr>
-map <S-h> :bp<cr>
-map <S-x> :bdelete<cr>
+map <C-l> :bn<cr>
+map <C-h> :bp<cr>
+map <C-x> :bdelete<cr>
+" save and quit
 nmap<silent> <leader>q :q<cr>
+nmap<silent> <leader>w :w<cr>
 " remove highlight
 nnoremap<silent> <esc><esc> :noh<return>
 " file explorer

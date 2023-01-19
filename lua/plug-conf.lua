@@ -7,7 +7,8 @@ require'nvim-treesitter.configs'.setup {
         "java",
         "rust",
         "javascript",
-        "python"
+        "python",
+        "latex"
     },
     highlight = {
         enable = true,

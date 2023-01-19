@@ -111,12 +111,12 @@ Neovim configuration
 
 #### Change windows with ctrl+(hjkl)
 
-| KeyMap |    Action    |
-|--------|--------------|
-| Ctrl h | Left window  |
-| Ctrl j | Down window  |
-| Ctrl k | Up window    |
-| Ctrl l | Right window |
+| KeyMap  |    Action    |
+|---------|--------------|
+| Shift h | Left window  |
+| Shift j | Down window  |
+| Shift k | Up window    |
+| Shift l | Right window |
 
 #### Create Window
 
@@ -129,9 +129,9 @@ Neovim configuration
 
 | KeyMap  |      Action     |
 |---------|-----------------|
-| Shift l | Buffer-Next     |
-| Shift h | Buffer-Previous |
-| Shift x | Buffer-Delete   |
+| Ctrl l | Buffer-Next     |
+| Ctrl h | Buffer-Previous |
+| Ctrl x | Buffer-Delete   |
 
 #### Drawer File Explorer
 
