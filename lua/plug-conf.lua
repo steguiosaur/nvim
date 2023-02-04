@@ -118,7 +118,7 @@ require('lualine').setup{
 require 'colorizer'.setup()
 
 
--- Telescope 
+-- Telescope
 local actions = require("telescope.actions")
 require 'telescope'.setup{
     defaults = {

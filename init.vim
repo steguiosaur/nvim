@@ -101,6 +101,7 @@ Plug 'aklt/plantuml-syntax'         " PlantUml ==========
 Plug 'weirongxu/plantuml-previewer.vim'
 Plug 'tyru/open-browser.vim'        " Preview in Browser
 Plug 'lervag/vimtex'                " LaTeX =============
+Plug 'Exafunction/codeium.vim'      " AI completion
 " Git
 Plug 'tpope/vim-fugitive'           " gitCommands
 Plug 'lewis6991/gitsigns.nvim'      " gutterDiff
