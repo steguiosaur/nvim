@@ -107,6 +107,9 @@ Plug 'tpope/vim-fugitive'           " gitCommands
 Plug 'lewis6991/gitsigns.nvim'      " gutterDiff
 call plug#end()
 
+" =================== LUA CONFIG ====================
+lua require('plug-conf')
+autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif
 
 " ================ PLUGINS SETTINGS =================
 " colorscheme
@@ -183,8 +186,3 @@ let g:ascii = [
             \]
 let g:startify_custom_header =
             \ 'startify#pad(g:ascii + startify#fortune#boxed())'
-
-
-" =================== LUA CONFIG ====================
-lua require('plug-conf')
-autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif
