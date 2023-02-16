@@ -1,4 +1,14 @@
 
+-- Lualine
+require('lualine').setup{
+    options = { theme = 'nightfly' },
+    sections = {
+        lualine_c = {'lsp_progress'},
+        lualine_x = {'encoding' , 'filetype'},
+    },
+}
+
+
 require('nvim-tundra').setup({
   transparent_background = false,
   dim_inactive_windows = {
@@ -46,6 +56,7 @@ require('nvim-tundra').setup({
 require'nvim-treesitter.configs'.setup {
     ensure_installed = {
         "c",
+        "cpp",
         "lua",
         "java",
         "rust",
@@ -145,15 +156,6 @@ require("bufferline").setup{
     	pick_selected = { italic = false },
     	pick_visible = { italic = false },
     	pick = { italic = false },
-    },
-}
-
--- Lualine
-require('lualine').setup{
-    options = { theme = 'nightfly' },
-    sections = {
-        lualine_c = {'lsp_progress'},
-        lualine_x = {'encoding' ,'filetype'},
     },
 }
 

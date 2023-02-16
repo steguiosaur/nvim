@@ -84,6 +84,7 @@ Plug 'Yggdroot/indentLine'          " indention
 Plug 'jiangmiao/auto-pairs'         " autoParenthesis
 Plug 'folke/which-key.nvim'         " keyCommands
 Plug 'preservim/tagbar'             " browseTags
+Plug 'liuchengxu/vista.vim'
 Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
 " File Explorer
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
