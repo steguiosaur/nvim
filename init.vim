@@ -4,7 +4,7 @@
 set wildignore=*.docx,*.pdf,*.jpg,*.png,*.gif,*.img
 set expandtab smarttab softtabstop=4 tabstop=4 
 set hlsearch incsearch ignorecase smartcase
-set wildmenu wildmode=longest,list,full
+set wildmenu wildmode=longest,full
 set laststatus=2 ruler showcmd showmode
 set breakindent linebreak wrap
 set autoindent shiftwidth=4
@@ -32,27 +32,48 @@ set directory^=$HOME/.nvim/tmp//
 
 
 " ===================== KEYMAPS =====================
-nnoremap j gj
-nnoremap k gk
 let mapleader = " "
+" line navigation on linebreak
+nmap <S-j> gj
+nmap <S-k> gk
+" vertical and horizontal window
+nmap <leader>v <C-w>v
+nmap <leader>h <C-w>s
+" window navigation
+nmap <C-j> <C-W><C-J>
+nmap <C-k> <C-W><C-K>
+nmap <C-l> <C-W><C-L>
+nmap <C-h> <C-W><C-H>
+" window resize
+nmap <C-Up> <cmd>resize +2<cr>
+nmap <C-Down> <cmd>resize -2<cr>
+nmap <C-Left> <cmd>vertical resize -2<cr>
+nmap <C-Right> <cmd>vertical resize +2<cr>
+" buffer navigation
+nmap <S-l> :bn<cr>
+nmap <S-h> :bp<cr>
+nmap <leader><S-q> :bdelete<cr>
+" save and quit
+nmap<silent> <leader>q :q<cr>
+nmap<silent> <leader>w :w<cr>
+" move text up and down
+nnoremap <A-j> :m .+1<CR>==
+nnoremap <A-k> :m .-2<CR>==
+inoremap <A-j> <Esc>:m .+1<CR>==gi
+inoremap <A-k> <Esc>:m .-2<CR>==gi
+vnoremap <A-j> :m '>+1<CR>gv=gv
+vnoremap <A-k> :m '<-2<CR>gv=gv
+" fast Esc
+imap jj <Esc>
+" disable yank on paste
+vmap p pgvy
+
 " vimPlug
 :command PC PlugClean       " Remove unused plugins
 :command PI PlugInstall     " Install plugins
 :command PU PlugUpdate      " Update plugins
 :command FZ FZF             " FuzzyFinder
 :command TT TagbarToggle    " TagBar
-" change windows with ctrl+(hjkl)
-nnoremap <S-j> <C-W><C-J>
-nnoremap <S-k> <C-W><C-K>
-nnoremap <S-l> <C-W><C-L>
-nnoremap <S-h> <C-W><C-H>
-" buffer mappings
-map <C-l> :bn<cr>
-map <C-h> :bp<cr>
-map <C-x> :bdelete<cr>
-" save and quit
-nmap<silent> <leader>q :q<cr>
-nmap<silent> <leader>w :w<cr>
 " remove highlight
 nnoremap<silent> <esc><esc> :noh<return>
 " file explorer
@@ -102,14 +123,14 @@ Plug 'aklt/plantuml-syntax'         " PlantUml ==========
 Plug 'weirongxu/plantuml-previewer.vim'
 Plug 'tyru/open-browser.vim'        " Preview in Browser
 Plug 'lervag/vimtex'                " LaTeX =============
-Plug 'Exafunction/codeium.vim'      " AI completion
+"Plug 'Exafunction/codeium.vim'      " AI completion
 " Git
 Plug 'tpope/vim-fugitive'           " gitCommands
 Plug 'lewis6991/gitsigns.nvim'      " gutterDiff
 call plug#end()
 
 " =================== LUA CONFIG ====================
-lua require('plug-conf')
+lua require("plug-conf")
 autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif
 
 " ================ PLUGINS SETTINGS =================

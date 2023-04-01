@@ -111,33 +111,33 @@ Neovim configuration
 
 #### Change windows with ctrl+(hjkl)
 
-| KeyMap  |    Action    |
-|---------|--------------|
-| Shift h | Left window  |
-| Shift j | Down window  |
-| Shift k | Up window    |
-| Shift l | Right window |
+| KeyMap |    Action    |
+|--------|--------------|
+| Ctrl h | Left window  |
+| Ctrl j | Down window  |
+| Ctrl k | Up window    |
+| Ctrl l | Right window |
 
 #### Create Window
 
-|  KeyMap  |       Action      |
-|----------|-------------------|
-| Ctrl w v | Vertical window   |
-| Ctrl w s | Horizontal window |
+| KeyMap |       Action      |
+|--------|-------------------|
+| Ctrl v | Vertical window   |
+| Ctrl h | Horizontal window |
 
 #### Buffer
 
 | KeyMap  |      Action     |
 |---------|-----------------|
-| Ctrl l | Buffer-Next     |
-| Ctrl h | Buffer-Previous |
-| Ctrl x | Buffer-Delete   |
+| Shift l | Buffer-Next     |
+| Shift h | Buffer-Previous |
+| Space Shift q | Buffer-Delete |
 
 #### Drawer File Explorer
 
 | KeyMap |       Action      |
 |--------|-------------------|
-| Ctrl b | `:NvimTreeToggle` |
+| Space e | `:NvimTreeToggle` |
 
 #### Telescope nvim
 

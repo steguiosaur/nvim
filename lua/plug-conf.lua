@@ -10,46 +10,46 @@ require('lualine').setup{
 
 
 require('nvim-tundra').setup({
-  transparent_background = false,
-  dim_inactive_windows = {
-    enabled = false,
-    color = nil,
-  },
-  sidebars = {
-    enabled = true,
-    color = nil,
-  },
-  editor = {
-    search = {},
-    substitute = {},
-  },
-  syntax = {
-    booleans = { bold = true, italic = false },
-    comments = { bold = true, italic = false },
-    conditionals = {},
-    constants = { bold = true },
-    fields = {},
-    functions = {},
-    keywords = {},
-    loops = {},
-    numbers = { bold = true },
-    operators = { bold = true },
-    punctuation = {},
-    strings = {},
-    types = { italic = false },
-  },
-  diagnostics = {
-    errors = {},
-    warnings = {},
-    information = {},
-    hints = {},
-  },
-  plugins = {
-    treesitter = true,
-    telescope = true,
-    nvimtree = true,
-    gitsigns = true,
-  },
+    transparent_background = false,
+    dim_inactive_windows = {
+        enabled = false,
+        color = nil,
+    },
+    sidebars = {
+        enabled = true,
+        color = nil,
+    },
+    editor = {
+        search = {},
+        substitute = {},
+    },
+    syntax = {
+        booleans = { bold = true, italic = false },
+        comments = { bold = true, italic = false },
+        conditionals = {},
+        constants = { bold = true },
+        fields = {},
+        functions = {},
+        keywords = {},
+        loops = {},
+        numbers = { bold = true },
+        operators = { bold = true },
+        punctuation = {},
+        strings = {},
+        types = { italic = false },
+    },
+    diagnostics = {
+        errors = {},
+        warnings = {},
+        information = {},
+        hints = {},
+    },
+    plugins = {
+        treesitter = true,
+        telescope = true,
+        nvimtree = true,
+        gitsigns = true,
+    },
 })
 
 -- TreeSitter
@@ -133,8 +133,8 @@ require('gitsigns').setup()
 -- Bufferline
 require("bufferline").setup{
     options = {
-        buffer_close_icon = '',
-        modified_icon = '', -- 
+        buffer_close_icon = '',
+        modified_icon = '', -- 
         close_icon = '',
         show_close_icon = true,
         left_trunc_marker = '',
