@@ -1,10 +1,16 @@
 {
+    "rust-analyzer.enable": true,
     "rust-analyzer.disableProgressNotifications": true,
-    "rust-analyzer.serverPath": "/usr/bin/rust-analyzer",
+    "rust-analyzer.server.path": "/usr/bin/rust-analyzer",
+    "rust-analyzer.debug.runtime":"vimspector",
     
     "inlayHint.enable": false,
 
     "pyright.inlayHints.variableTypes": false,
 
-    "clangd.inlayHint.enable": false
+    "clangd.arguments": [
+        "--log=verbose",
+        "--fallback-style=LLVM",
+        "--inlay-hints=false"
+    ],
 }

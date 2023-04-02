@@ -5,7 +5,7 @@ set wildignore=*.docx,*.pdf,*.jpg,*.png,*.gif,*.img
 set expandtab smarttab softtabstop=4 tabstop=4 
 set hlsearch incsearch ignorecase smartcase
 set wildmenu wildmode=longest,full
-set laststatus=2 ruler showcmd showmode
+set laststatus=2 ruler showcmd noshowmode
 set breakindent linebreak wrap
 set autoindent shiftwidth=4
 set clipboard+=unnamedplus
@@ -24,6 +24,11 @@ set confirm             " confirm save before quit.
 set mouse=a             " mouse interact enabled
 set hidden              " related to buffers
 set title               " show file title
+set nobackup
+set nowritebackup
+set cmdheight=1
+set updatetime=300
+set signcolumn=yes
 
 let g:python3_host_prog = '/usr/bin/python'
 let g:python_host_prog  = '/usr/bin/python2'
@@ -52,7 +57,7 @@ nmap <C-Right> <cmd>vertical resize +2<cr>
 " buffer navigation
 nmap <S-l> :bn<cr>
 nmap <S-h> :bp<cr>
-nmap <leader><S-q> :bdelete<cr>
+nmap <S-q> :bdelete<cr>
 " save and quit
 nmap<silent> <leader>q :q<cr>
 nmap<silent> <leader>w :w<cr>
@@ -89,6 +94,13 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <leader>lp <cmd>PO<cr>
 " MarkdownPreview
 nmap<silent> <leader>lm :MarkdownPreview<cr>
+" Coc nvim mappings
+nmap <silent> gb <Plug>(coc-diagnostic-prev)
+nmap <silent> gn <Plug>(coc-diagnostic-next)
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 
 
 " ===================== PLUGINS =====================
@@ -117,7 +129,7 @@ Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 " Completion Linters
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-"Plug 'puremourning/vimspector'
+Plug 'puremourning/vimspector'
 Plug 'arkav/lualine-lsp-progress'   " diagnostic progress
 Plug 'aklt/plantuml-syntax'         " PlantUml ==========
 Plug 'weirongxu/plantuml-previewer.vim'
@@ -131,7 +143,6 @@ call plug#end()
 
 " =================== LUA CONFIG ====================
 lua require("plug-conf")
-autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif
 
 " ================ PLUGINS SETTINGS =================
 " colorscheme
@@ -157,17 +168,12 @@ let g:vimtex_view_method = 'zathura'
 "let g:vimtex_compiler_method = 'tectonic'
 
 " coc.nvim
-set nobackup
-set nowritebackup
-set cmdheight=1
-set updatetime=300
-set signcolumn=yes
 autocmd CursorHold * silent call CocActionAsync('highlight')
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
-nmap <silent> gb <Plug>(coc-diagnostic-prev)
-nmap <silent> gn <Plug>(coc-diagnostic-next)
+" NvimTree
+autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif
 
 let g:coc_global_extensions = [
     \   'coc-clangd',
