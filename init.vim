@@ -101,7 +101,11 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
-
+" Use <Tab> and <S-Tab> for navigate completion list                            
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"                        
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " ===================== PLUGINS =====================
 call plug#begin()
@@ -165,12 +169,9 @@ let g:tex_flavor='latex'
 let g:vimtex_syntax_conceal_disable = 1
 let g:vimtex_quickfix_mode=1
 let g:vimtex_view_method = 'zathura'
-"let g:vimtex_compiler_method = 'tectonic'
 
 " coc.nvim
 autocmd CursorHold * silent call CocActionAsync('highlight')
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " NvimTree
 autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif
