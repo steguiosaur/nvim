@@ -83,7 +83,8 @@ vmap p pgvy
 nnoremap<silent> <esc><esc> :noh<return>
 " file explorer
 nmap<silent> <leader>e :NvimTreeToggle<cr>
-nmap<silent> <leader>t :TagbarToggle<cr>
+" toggleterm
+nmap<silent> <leader>t :ToggleTerm direction=float<cr>
 " Telescope.nvim
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
@@ -124,8 +125,6 @@ Plug 'preservim/tagbar'             " browseTags
 Plug 'liuchengxu/vista.vim'
 Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
 " File Explorer
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'             " fuzzyFinder
 Plug 'kyazdani42/nvim-web-devicons' " fileTreeIcons
 Plug 'kyazdani42/nvim-tree.lua'     " fileTree
 Plug 'nvim-lua/plenary.nvim'        " layout

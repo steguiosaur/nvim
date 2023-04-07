@@ -1,11 +1,13 @@
 {
-    "rust-analyzer.enable": true,
-    "rust-analyzer.disableProgressNotifications": true,
-    "rust-analyzer.server.path": "/usr/bin/rust-analyzer",
+    "diagnostic.virtualText": false,
+    "diagnostic.checkCurrentLine": true,
+    "diagnostic.messageTarget": "float",
+    "diagnostic.level": "information",
+
+    "rust-analyzer.diagnostics.enable": true,
+    "rust-analyzer.server.path": "/usr/bin/rust-analyzer-wrapper",
     "rust-analyzer.debug.runtime":"vimspector",
     
-    "inlayHint.enable": false,
-
     "pyright.inlayHints.variableTypes": false,
 
     "clangd.arguments": [
