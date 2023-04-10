@@ -1,47 +1,38 @@
-# NEOVIM Config
+# :hatching_chick: NEOVIM Config
 
-Neovim configuration
+**Personal Neovim configuration with Markdown and LaTeX previewer**
 
-![NEOVIM](./screenshots/Screenshot_Arch.png)
+![NEOVIM](./neovim_rice.png)
 
 ---
 
-## Features
+## :gear: Features
 
 > Configurable under `~/.config/nvim/init.vim`
 
-- PlantUML Previewer
-- LaTeX Previewer
+- Preview LaTeX using Zathura
+- Preview Markdown, UML, etc. in default browser
 
 ### Aesthetics
 
 - Buffer - `akinsho/bufferline.nvim`
 - Statusline - `nvim-lualine/lualine.nvim`
-- Icons - `ryanoasis/vim-devicons`
+- Icons - `kyazdani42/nvim-web-devicons`
 - Colorscheme - `sam4llis/nvim-tundra`
 
 ### Functionality
 
-- Start Prompt- `mhinz/vim-startify`
-- Indentation - `Yggdroot/indentLine`
+- Start Prompt - `goolord/alpha-nvim`
+- Indentation - `lukas-reineke/indent-blankline.nvim`
 - Auto Pairing - `jiangmiao/auto-pairs`
 - Tags - `preservim/tagbar`
 - Command - `folke/which-key.nvim`
-- Terminal - `akinsho/toggleterm.nvim`
 
 ### File Explorer
 
-- Fuzzy Finder
-  - `junegunn/fzf`
-  - `junegunn/fzf.vim`
+- Nvim Tree - `kyazdani42/nvim-tree.lua`
 
-- Nvim Tree
-  - `kyazdani42/nvim-web-devicons`
-  - `kyazdani42/nvim-tree.lua`
-
-- Telescope
-  - `nvim-telescope/telescope.nvim`
-  - `nvim-lua/plenary.nvim`
+- Telescope - `nvim-telescope/telescope.nvim`
 
 ### Completion, Linters, and Syntax Highlighting
 
@@ -55,13 +46,12 @@ Neovim configuration
 - Git Command Mode - `tpope/vim-fugitive`
 - Gutter Changes - `lewis6991/gitsigns.nvim`
 
-## Setup
+## :hammer_and_wrench: Setup
 
 ### Required
 
 - Neovim
 - Git
-- Lua
 - [Vim-Plug (Plugin Manager)](https://github.com/junegunn/vim-plug )
 
 ### Optional
@@ -84,13 +74,7 @@ Neovim configuration
 3. Clone repository to $HOME/.config/nvim
 
     ```console
-    git clone https://github.com/steguiosaur/nvim ~/.config/nvim
-    ```
-
-    > For Termux - Android Terminal Emulator
-
-    ```console
-    git clone -b termux https://github.com/steguiosaur/nvim ~/.config/nvim
+    git clone https://github.com/steguiosaur/nvim.git ~/.config/nvim
     ```
 
 4. Install Packages
@@ -105,7 +89,7 @@ Neovim configuration
 
 ---
 
-## KeyMaps and Command Shortcuts
+## :keyboard: KeyMaps and Command Shortcuts
 
 ### KeyMaps
 
@@ -131,7 +115,7 @@ Neovim configuration
 |---------|-----------------|
 | Shift l | Buffer-Next     |
 | Shift h | Buffer-Previous |
-| Space Shift q | Buffer-Delete |
+| Shift q | Buffer-Delete |
 
 #### Drawer File Explorer
 
@@ -147,13 +131,15 @@ Neovim configuration
 | Spc f g | `:Telescope live_grep`  |
 | Spc f b | `:Telescope buffers`    |
 | Spc f h | `:Telescope help_tags`  |
+| Spc f c | `:Telescope git_commit` |
+| Spc f s | `:Telescope git_status` |
 
 #### Previewer
 
-| KeyMap  |   Action    |    Command    |
-|---------|-------------|---------------|
-| Spc l l | TeX Preview |               |
-| Spc l p | UML Preview | :PlantumlOpen |
+| KeyMap  |   Action    |    Command         |
+|---------|-------------|--------------------|
+| Spc l l | TeX Preview |                    |
+| Spc l m | Md Preview  | `:MarkdownPreview` |
 
 #### Check Diagnostics
 
@@ -172,9 +158,3 @@ Neovim configuration
 | `:PI` | `:PlugInstall`  |
 | `:PU` | `:PlugUpdate`   |
 
-#### FuzzyFinder + Tagbar
-
-|  Shortcut  |  Command   |
-|------------|------------|
-| `:FZ` | `:FZF`          |
-| `:TT` | `:TagbarToggle` |

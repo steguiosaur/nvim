@@ -114,11 +114,12 @@ nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-" PlantUML
-:command PO PlantumlOpen    " PlantUML Preview
-nnoremap <leader>lp <cmd>PO<cr>
+nnoremap <leader>fc <cmd>Telescope git_commits<cr>
+nnoremap <leader>fs <cmd>Telescope git_status<cr>
 " MarkdownPreview
-nmap<silent> <leader>lm :MarkdownPreview<cr>
+nmap <leader>lm <Plug>MarkdownPreview
+nmap <leader>ls <Plug>MarkdownPreviewStop
+nmap <leader>lt <Plug>MarkdownPreviewToggle
 " Coc nvim mappings
 nmap <silent> gb <Plug>(coc-diagnostic-prev)
 nmap <silent> gn <Plug>(coc-diagnostic-next)
@@ -126,8 +127,8 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
-" Use <Tab> and <S-Tab> for navigate completion list                            
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"                        
+" Use <Tab> and <S-Tab> for navigate completion list
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
@@ -154,11 +155,8 @@ Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'puremourning/vimspector'
-Plug 'arkav/lualine-lsp-progress'   " diagnostic progress
-Plug 'aklt/plantuml-syntax'         " PlantUml ==========
-Plug 'weirongxu/plantuml-previewer.vim'
-Plug 'tyru/open-browser.vim'        " Preview in Browser
-Plug 'lervag/vimtex'                " LaTeX =============
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+Plug 'lervag/vimtex'                " LaTeX
 "Plug 'Exafunction/codeium.vim'      " AI completion
 " Git
 Plug 'tpope/vim-fugitive'           " gitCommands
@@ -179,6 +177,9 @@ let g:tagbar_width = 30
 " auto pairs
 let g:AutoPairs = {'(':')', '[':']', '{':'}'}
 
+" NvimTree
+autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif
+
 " LaTeX
 let maplocalleader = " "    " <leader>ll LivePreview
 let g:tex_flavor='latex'
@@ -188,9 +189,6 @@ let g:vimtex_view_method = 'zathura'
 
 " coc.nvim
 autocmd CursorHold * silent call CocActionAsync('highlight')
-
-" NvimTree
-autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif
 
 let g:coc_global_extensions = [
     \   'coc-clangd',
@@ -214,3 +212,6 @@ let g:coc_global_extensions = [
     \   'coc-tsserver',
     \   'coc-zig',
     \]
+
+" MarkdownPreview
+let g:mkdp_theme = 'dark'
