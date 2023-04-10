@@ -1,39 +1,53 @@
-" ============== NEOVIM CONFIG 221028 ===============
+" ============== NEOVIM CONFIG 230410 ===============
 
 " ===================== OPTIONS =====================
-set wildignore=*.docx,*.pdf,*.jpg,*.png,*.gif,*.img
-set expandtab smarttab softtabstop=4 tabstop=4 
-set hlsearch incsearch ignorecase smartcase
-set wildmenu wildmode=longest,full
-set laststatus=2 ruler showcmd noshowmode
-set breakindent linebreak wrap
-set autoindent shiftwidth=4
-set clipboard+=unnamedplus
-filetype plugin indent on
-set number relativenumber
-set termguicolors       " about colors of something
-set encoding=utf8       " output encoding
-set shortmess+=c        " Hide or shorten messages
-set textwidth=0         " adjust width <charMAX=80>
-set scrolloff=5         " offsets scroll on edge
-set cursorline          " show current line
-set conceallevel=0
-set showmatch           " show matching words
-set modeline            " enable vim modelines
-set confirm             " confirm save before quit.
-set mouse=a             " mouse interact enabled
-set hidden              " related to buffers
-set title               " show file title
-set nobackup
-set nowritebackup
-set cmdheight=1
-set updatetime=300
-set signcolumn=yes
+set number " show numberline
+set relativenumber " relative numberline
+set expandtab " enables space for tabs
+set tabstop=4 " number of spaces in a tab
+set softtabstop=4 " spaces per <Tab> and <Backspace>
+set autoindent " copy indent from previous line
+set shiftwidth=4 " space for indentation
+set hlsearch " highlight searched words
+set incsearch " show search current matched patterns
+set ignorecase " case insensitive search
+set smartcase " override 'ignorecase'
+set cursorline " highlight current cursor line
+set showmatch " show matching parenthesis and brackets
+set wrap " wrap lines extending the window
+set breakindent " linebreak follows indentation
+set breakat+=" ^!@*-+;:,./?" " linebreakable characters
+set linebreak " break long lines in 'breakat'
+set conceallevel=0 " reveal syntax on Markdown files
+set fileencoding=utf8 " file encoding in buffer
+set textwidth=0 " no string limitation
+set shortmess+=c " shorten message prompts
+set scrolloff=5 " lines above and below cursor
+set mouse=a " mouse support
+set laststatus=2 " last window statusline enable
+set noshowmode " show current mode
+set showtabline=1 " shows tabline
+set signcolumn=yes " shows signcolumn
+set modeline " file specific options on comments
+set clipboard+=unnamedplus " connect to system clipboard
+set confirm " confirm on exit
+set wildmenu " command completion on <Tab>
+set wildmode=longest,full " event on <Tab>
+set wildignore=*.o,*.docx,*.pdf,*.jpg,*.png,*.gif,*.img
+set termguicolors " enable 24-bit RGB color in the TUI
+set hidden " hide current unsaved edited file on :e
+set title " show filename and directory on titlestring
+set undofile " persistent undo
+set pumheight=10 " visible  
+set noswapfile " swapfiles for recovery
+set updatetime=250 " when nothing is typed
 
 let g:python3_host_prog = '/usr/bin/python'
 let g:python_host_prog  = '/usr/bin/python2'
 " swapfiles
-set directory^=$HOME/.nvim/tmp//
+"set directory^=$HOME/.nvim/tmp//
+" vertical help buffer
+autocmd! BufEnter * if &ft ==# 'help' | wincmd L | endif")
 
 
 " ===================== KEYMAPS =====================
@@ -50,17 +64,27 @@ nmap <C-k> <C-W><C-K>
 nmap <C-l> <C-W><C-L>
 nmap <C-h> <C-W><C-H>
 " window resize
-nmap <C-Up> <cmd>resize +2<cr>
-nmap <C-Down> <cmd>resize -2<cr>
-nmap <C-Left> <cmd>vertical resize -2<cr>
-nmap <C-Right> <cmd>vertical resize +2<cr>
+nmap<silent> <C-Up> <cmd>resize +2<cr>
+nmap<silent> <C-Down> <cmd>resize -2<cr>
+nmap<silent> <C-Left> <cmd>vertical resize -2<cr>
+nmap<silent> <C-Right> <cmd>vertical resize +2<cr>
+" window vertical to horizontal (vice versa)
+nmap <C-S-Up> <C-w><S-k>
+nmap <C-S-Down> <C-w><S-j>
+nmap <C-S-Left> <C-w><S-h>
+nmap <C-S-Right> <C-w><S-l>
+
 " buffer navigation
-nmap <S-l> :bn<cr>
-nmap <S-h> :bp<cr>
-nmap <S-q> :bdelete<cr>
+nmap<silent> <S-l> :bn<cr>
+nmap<silent> <S-h> :bp<cr>
+nmap<silent> <S-q> :bdelete<cr>
 " save and quit
 nmap<silent> <leader>q :q<cr>
 nmap<silent> <leader>w :w<cr>
+" change word 
+nmap <leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+" chmod on nvim
+nmap<silent> <leader>x <cmd>!chmod +x %<CR>
 " move text up and down
 nnoremap <A-j> :m .+1<CR>==
 nnoremap <A-k> :m .-2<CR>==
@@ -71,7 +95,7 @@ vnoremap <A-k> :m '<-2<CR>gv=gv
 " fast Esc
 imap jj <Esc>
 " disable yank on paste
-vmap p pgvy
+vmap p "_dP
 
 " vimPlug
 :command PC PlugClean       " Remove unused plugins
@@ -83,8 +107,8 @@ vmap p pgvy
 nnoremap<silent> <esc><esc> :noh<return>
 " file explorer
 nmap<silent> <leader>e :NvimTreeToggle<cr>
-" toggleterm
-nmap<silent> <leader>t :ToggleTerm direction=float<cr>
+" tagbar
+nmap<silent> <leader>t :TagbarToggle<cr>
 " Telescope.nvim
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
@@ -113,22 +137,19 @@ call plug#begin()
 " Aesthetics
 Plug 'akinsho/bufferline.nvim', { 'tag': 'v2.*' }
 Plug 'nvim-lualine/lualine.nvim'    " statusline
-Plug 'ryanoasis/vim-devicons'       " icons
 Plug 'sam4llis/nvim-tundra'         " colorscheme
 Plug 'norcalli/nvim-colorizer.lua'  " colorHighlighter
 " Functionalities
-Plug 'mhinz/vim-startify'           " startPrompt
-Plug 'Yggdroot/indentLine'          " indention
+Plug 'goolord/alpha-nvim'           " start screen
+Plug 'lukas-reineke/indent-blankline.nvim'  " indention
 Plug 'jiangmiao/auto-pairs'         " autoParenthesis
 Plug 'folke/which-key.nvim'         " keyCommands
 Plug 'preservim/tagbar'             " browseTags
-Plug 'liuchengxu/vista.vim'
-Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
 " File Explorer
 Plug 'kyazdani42/nvim-web-devicons' " fileTreeIcons
 Plug 'kyazdani42/nvim-tree.lua'     " fileTree
 Plug 'nvim-lua/plenary.nvim'        " layout
-Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
 " Completion Linters
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -145,16 +166,12 @@ Plug 'lewis6991/gitsigns.nvim'      " gutterDiff
 call plug#end()
 
 " =================== LUA CONFIG ====================
-lua require("plug-conf")
+lua require("plugins")
 
 " ================ PLUGINS SETTINGS =================
 " colorscheme
 syntax enable
 colorscheme tundra
-
-" indentLine
-let g:indentLine_char = '▏'
-let g:indentLine_concealcursor = ""
 
 " tagbar
 let g:tagbar_width = 30
@@ -195,22 +212,5 @@ let g:coc_global_extensions = [
     \   'coc-snippets',
     \   'coc-sql',
     \   'coc-tsserver',
-    \   'coc-xml',
-    \   'coc-yaml',
     \   'coc-zig',
     \]
-
-" startify
-function! StartifyEntryFormat()
-    return 'WebDevIconsGetFileTypeSymbol(absolute_path) ." ". entry_path'
-endfunction
-let g:startify_files_number = 5
-let g:ascii = [
-            \' ',
-            \' ▒█▄░▒█ ▒█▀▀▀ ▒█▀▀▀█ ▒█░░▒█ ▀█▀ ▒█▀▄▀█',
-            \' ▒█▒█▒█ ▒█▀▀▀ ▒█░░▒█ ░▒█▒█░ ▒█░ ▒█▒█▒█',
-            \' ▒█░░▀█ ▒█▄▄▄ ▒█▄▄▄█ ░░▀▄▀░ ▄█▄ ▒█░░▒█',
-            \' ',
-            \]
-let g:startify_custom_header =
-            \ 'startify#pad(g:ascii + startify#fortune#boxed())'
