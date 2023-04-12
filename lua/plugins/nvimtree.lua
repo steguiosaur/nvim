@@ -1,5 +1,6 @@
 require("nvim-tree").setup {
     renderer = {
+        root_folder_label = false,
         indent_markers = {
             enable = true,
         },
@@ -38,19 +39,17 @@ require("nvim-tree").setup {
     update_focused_file = { enable = true },
     hijack_directories = { enable = true },
     view = {
-        hide_root_folder = true,
         mappings = {
             list = {
-                { key = 'l',  action = "edit" },
-                { key = 'o',  action = "edit" },
+                { key = 'l',    action = "edit" },
+                { key = 'o',    action = "edit" },
                 { key = '<cr>', action = "edit" },
-                { key = 'I',  action = "toggle_ignored" },
-                { key = 'H',  action = "toggle_dotfiles" },
-                { key = 'R',  action = "refresh" },
-                { key = '=',  action = "preview" },
-                { key = 'X',  action = "xdg_open",       action_cb = xdg_open }
+                { key = 'I',    action = "toggle_ignored" },
+                { key = 'H',    action = "toggle_dotfiles" },
+                { key = 'R',    action = "refresh" },
+                { key = '=',    action = "preview" },
+                { key = 'X',    action = "xdg_open",       action_cb = xdg_open }
             }
         }
     },
-    open_on_setup = false,
 }

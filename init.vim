@@ -180,13 +180,6 @@ let g:AutoPairs = {'(':')', '[':']', '{':'}'}
 " NvimTree
 autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif
 
-" LaTeX
-let maplocalleader = " "    " <leader>ll LivePreview
-let g:tex_flavor='latex'
-let g:vimtex_syntax_conceal_disable = 1
-let g:vimtex_quickfix_mode=1
-let g:vimtex_view_method = 'zathura'
-
 " coc.nvim
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
@@ -212,6 +205,13 @@ let g:coc_global_extensions = [
     \   'coc-tsserver',
     \   'coc-zig',
     \]
+
+" LaTeX
+let maplocalleader = " "    " <leader>ll LivePreview
+let g:tex_flavor='latex'
+let g:vimtex_syntax_conceal_disable = 1
+let g:vimtex_quickfix_mode=1
+let g:vimtex_view_method = 'zathura'
 
 " MarkdownPreview
 let g:mkdp_theme = 'dark'

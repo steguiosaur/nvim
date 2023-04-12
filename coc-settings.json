@@ -7,18 +7,6 @@
     "diagnostic.level": "warning",
     "diagnostic.errorSign": "✘",
     "diagnostic.infoSign": "i",
-    "languageserver": {
-        "rust": {
-            "command": "rust-analyzer",
-            "filetypes": [
-                "rust",
-                "rs"
-            ],
-            "rootPatterns": [
-                "Cargo.toml"
-            ]
-        }
-    },
     "pyright.inlayHints.variableTypes": false,
     "clangd.arguments": [
         "--log=verbose",
