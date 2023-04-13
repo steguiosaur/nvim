@@ -42,13 +42,16 @@ set pumheight=10 " visible
 set noswapfile " swapfiles for recovery
 set updatetime=250 " when nothing is typed
 
-let g:python3_host_prog = '/usr/bin/python'
-let g:python_host_prog  = '/usr/bin/python2'
-" swapfiles
-"set directory^=$HOME/.nvim/tmp//
 " vertical help buffer
 autocmd! BufEnter * if &ft ==# 'help' | wincmd L | endif")
 
+if has ("Android") " Termux compatibility
+    let g:python3_host_prog = '$PREFIX/bin/python'
+    let g:python_host_prog  = '$PREFIX/bin/python2'
+else
+    let g:python3_host_prog = '/usr/bin/python'
+    let g:python_host_prog  = '/usr/bin/python2'
+endif
 
 " ===================== KEYMAPS =====================
 let mapleader = " "
