@@ -13,4 +13,12 @@
         "--fallback-style=LLVM",
         "--inlay-hints=false"
     ],
+    "languageserver": {
+        "rust": {
+            "command": "rust-analyzer",
+            "filetypes": [
+                "rust"
+            ]
+        }
+    }
 }

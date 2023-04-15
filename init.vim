@@ -201,7 +201,6 @@ let g:coc_global_extensions = [
     \   'coc-markdownlint',
     \   'coc-phpls',
     \   'coc-pyright',
-    \   'coc-rust-analyzer',
     \   'coc-sh',
     \   'coc-snippets',
     \   'coc-sql',

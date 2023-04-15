@@ -5,6 +5,7 @@ require('nvim-treesitter.configs').setup {
         "cpp",
         "css",
         "go",
+        "html",
         "java",
         "javascript",
         "latex",
@@ -12,6 +13,7 @@ require('nvim-treesitter.configs').setup {
         "markdown",
         "python",
         "rust",
+        "typescript",
         "zig"
     },
     highlight = {
