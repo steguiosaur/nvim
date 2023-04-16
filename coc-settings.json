@@ -18,6 +18,18 @@
             "command": "rust-analyzer",
             "filetypes": [
                 "rust"
+            ],
+            "rootPatterns": [
+                "Cargo.toml"
+            ]
+        },
+        "zig": {
+            "command": "zls",
+            "filetypes": [
+                "zig"
+            ],
+            "rootPatterns": [
+                "build.zig"
             ]
         }
     }

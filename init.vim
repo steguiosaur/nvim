@@ -205,8 +205,10 @@ let g:coc_global_extensions = [
     \   'coc-snippets',
     \   'coc-sql',
     \   'coc-tsserver',
-    \   'coc-zig',
     \]
+" Removed language server
+"    \   'coc-rust-analyzer',
+"    \   'coc-zig',
 
 " LaTeX
 let maplocalleader = " "    " <leader>ll LivePreview
