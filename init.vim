@@ -58,6 +58,9 @@ let mapleader = " "
 " line navigation on linebreak
 nmap <S-j> gj
 nmap <S-k> gk
+" line navigation on visual linebreak
+vmap <S-j> gj
+vmap <S-k> gk
 " vertical and horizontal window
 nmap <leader>v <C-w>v
 nmap <leader>h <C-w>s
