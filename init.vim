@@ -38,7 +38,7 @@ set termguicolors " enable 24-bit RGB color in the TUI
 set hidden " hide current unsaved edited file on :e
 set title " show filename and directory on titlestring
 set undofile " persistent undo
-set pumheight=10 " visible  
+set pumheight=10 " visible
 set noswapfile " swapfiles for recovery
 set updatetime=250 " when nothing is typed
 
@@ -98,6 +98,12 @@ inoremap <A-j> <Esc>:m .+1<CR>==gi
 inoremap <A-k> <Esc>:m .-2<CR>==gi
 vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
+" insert mode navigation
+imap<silent> <C-h> <C-o>h
+imap<silent> <C-j> <C-o>j
+imap<silent> <C-k> <C-o>k
+imap<silent> <C-l> <C-o>l
+
 " fast Esc
 imap jj <Esc>
 " disable yank on paste

@@ -1,3 +1,21 @@
+
+local function on_attach(bufnr)
+    local api = require("nvim-tree.api")
+
+    local function opts(desc)
+        return { desc = 'nvim-tree: ' .. desc, buffer = bufnr, nowait = true }
+    end
+
+    keymap('n', '<CR>', api.node.open.edit, opts('Open'))
+    keymap('n', 'I', api.tree.toggle_gitignore_filter, opts('Toggle Git Ignore'))
+    keymap('n', 'H', api.tree.toggle_hidden_filter, opts('Toggle Dotfiles'))
+    keymap('n', 'r', api.fs.rename, opts('Rename'))
+    keymap('n', 'R', api.tree.reload, opts('Refresh'))
+    keymap('n', 'U', api.tree.toggle_custom_filter, opts('Toggle Hidden'))
+    keymap('n', 'S', api.tree.search_node, opts('Search'))
+
+end
+
 require("nvim-tree").setup {
     renderer = {
         root_folder_label = false,
@@ -38,18 +56,5 @@ require("nvim-tree").setup {
     },
     update_focused_file = { enable = true },
     hijack_directories = { enable = true },
-    view = {
-        mappings = {
-            list = {
-                { key = 'l',    action = "edit" },
-                { key = 'o',    action = "edit" },
-                { key = '<cr>', action = "edit" },
-                { key = 'I',    action = "toggle_ignored" },
-                { key = 'H',    action = "toggle_dotfiles" },
-                { key = 'R',    action = "refresh" },
-                { key = '=',    action = "preview" },
-                { key = 'X',    action = "xdg_open",       action_cb = xdg_open }
-            }
-        }
-    },
+    on_attach = on_attach,
 }
