@@ -42,15 +42,14 @@ set pumheight=10 " visible
 set noswapfile " swapfiles for recovery
 set updatetime=250 " when nothing is typed
 
-" vertical help buffer
-autocmd! BufEnter * if &ft ==# 'help' | wincmd L | endif")
-
 if has ("Android") " Termux compatibility
     let g:python3_host_prog = '$PREFIX/bin/python'
     let g:python_host_prog  = '$PREFIX/bin/python2'
 else
     let g:python3_host_prog = '/usr/bin/python'
     let g:python_host_prog  = '/usr/bin/python2'
+    " vertical help buffer
+    autocmd! BufEnter * if &ft ==# 'help' | wincmd L | endif")
 endif
 
 " ===================== KEYMAPS =====================
@@ -143,7 +142,7 @@ nmap <silent> gr <Plug>(coc-references)
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+    \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " ===================== PLUGINS =====================
 call plug#begin()
@@ -214,7 +213,7 @@ let g:coc_global_extensions = [
     \   'coc-sql',
     \   'coc-tsserver',
     \]
-" Removed language server
+" Removed language server (manually install)
 "    \   'coc-rust-analyzer',
 "    \   'coc-zig',
 
